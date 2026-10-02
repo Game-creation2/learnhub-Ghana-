@@ -60,6 +60,7 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 15px;
+      margin: 4px 2px;
     }
     button:hover { background: #0d478f; }
     input, select {
@@ -70,10 +71,11 @@
       border-radius: 7px;
       font-size: 16px;
     }
-    #message {
+    #message, #accountMessage {
       margin-top: 15px;
       color: #1763c6;
       font-weight: bold;
+      overflow-wrap: anywhere;
     }
     footer {
       text-align: center;
@@ -82,6 +84,7 @@
       color: white;
       margin-top: 35px;
     }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
@@ -108,6 +111,7 @@
 
   <main class="container">
     <h2>What you can do</h2>
+
     <div class="cards">
       <section class="card" id="classes">
         <h3>Live Classes</h3>
@@ -136,19 +140,35 @@
 
     <section class="card" id="join" style="margin-top:25px;">
       <h2>Join LearnHub Ghana</h2>
-      <p>Enter your details to try the demonstration.</p>
+      <p>Create an account or sign in.</p>
 
-      <label>Your name</label>
+      <label for="studentName">Your name</label>
       <input id="studentName" type="text" placeholder="Enter your name">
 
-      <label>I am a</label>
+      <label for="role">I am a</label>
       <select id="role">
         <option>Student</option>
         <option>Teacher</option>
       </select>
 
-      <button onclick="joinHub()">Join Now</button>
-      <p id="message"></p>
+      <label for="email">Email address</label>
+      <input id="email" type="email" placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="At least 6 characters">
+
+      <button onclick="signUp()">Create Account</button>
+      <button onclick="signIn()">Sign In</button>
+      <button onclick="googleSignIn()">Continue with Google</button>
+
+      <p id="accountMessage" aria-live="polite"></p>
+
+      <div id="signedInArea" class="hidden">
+        <p id="signedInText"></p>
+        <button onclick="signOutUser()">Sign Out</button>
+      </div>
+
+      <p id="message" aria-live="polite"></p>
     </section>
   </main>
 
@@ -169,9 +189,120 @@
       if (name === "") {
         showMessage("Please enter your name first.");
       } else {
-        showMessage("Welcome, " + name + "! You joined as a " + role + ".");
+        showMessage("Welcome, " + name + "! You selected " + role + ".");
       }
     }
+    window.showMessage = showMessage;
+    window.joinHub = joinHub;
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signOut,
+      onAuthStateChanged,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCeujDskpEkThTiNtNzQMtZsVxVXog3iPk",
+      authDomain: "learnhub-ghana.firebaseapp.com",
+      projectId: "learnhub-ghana",
+      storageBucket: "learnhub-ghana.firebasestorage.app",
+      messagingSenderId: "19839325015",
+      appId: "1:19839325015:web:83ffc18d729273b5f32412"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+
+    function accountMessage(text) {
+      document.getElementById("accountMessage").textContent = text;
+    }
+
+    function getEmailAndPassword() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        accountMessage("Please enter your email and password.");
+        return null;
+      }
+      return { email, password };
+    }
+
+    window.signUp = async function () {
+      const details = getEmailAndPassword();
+      if (!details) return;
+
+      const name = document.getElementById("studentName").value.trim();
+      if (!name) {
+        accountMessage("Please enter your name first.");
+        return;
+      }
+
+      try {
+        accountMessage("Creating your account...");
+        const result = await createUserWithEmailAndPassword(
+          auth, details.email, details.password
+        );
+        await updateProfile(result.user, { displayName: name });
+        accountMessage("Your account has been created. Welcome!");
+      } catch (error) {
+        accountMessage(error.message);
+      }
+    };
+
+    window.signIn = async function () {
+      const details = getEmailAndPassword();
+      if (!details) return;
+
+      try {
+        accountMessage("Signing you in...");
+        await signInWithEmailAndPassword(auth, details.email, details.password);
+        accountMessage("You are signed in!");
+      } catch (error) {
+        accountMessage(error.message);
+      }
+    };
+
+    window.googleSignIn = async function () {
+      try {
+        accountMessage("Opening Google sign-in...");
+        await signInWithPopup(auth, googleProvider);
+        accountMessage("You are signed in with Google!");
+      } catch (error) {
+        accountMessage(error.message);
+      }
+    };
+
+    window.signOutUser = async function () {
+      try {
+        await signOut(auth);
+        accountMessage("You have signed out.");
+      } catch (error) {
+        accountMessage(error.message);
+      }
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      const area = document.getElementById("signedInArea");
+      const text = document.getElementById("signedInText");
+
+      if (user) {
+        area.classList.remove("hidden");
+        text.textContent = "Signed in as " + (user.displayName || user.email);
+      } else {
+        area.classList.add("hidden");
+        text.textContent = "";
+      }
+    });
   </script>
 
 </body>
