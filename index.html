@@ -6,150 +6,56 @@
   <title>LearnHub Ghana</title>
   <style>
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f6fb;
-      color: #17233c;
-    }
-    header {
-      background: #123c7a;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 { margin: 0 0 8px; }
-    nav {
-      background: white;
-      padding: 12px;
-      text-align: center;
-    }
-    nav a {
-      color: #123c7a;
-      margin: 0 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background: #dceaff;
-      padding: 45px 20px;
-      text-align: center;
-    }
-    .hero h2 { font-size: 30px; }
-    .container {
-      max-width: 900px;
-      margin: 25px auto;
-      padding: 0 15px;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px #00000012;
-    }
-    button {
-      background: #1763c6;
-      color: white;
-      border: 0;
-      padding: 12px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      margin: 4px 2px;
-    }
-    button:hover { background: #0d478f; }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0 15px;
-      border: 1px solid #ccd5e2;
-      border-radius: 7px;
-      font-size: 16px;
-    }
-    #message, #accountMessage {
-      margin-top: 15px;
-      color: #1763c6;
-      font-weight: bold;
-      overflow-wrap: anywhere;
-    }
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #123c7a;
-      color: white;
-      margin-top: 35px;
-    }
-    .hidden { display: none; }
+    body { margin:0; font-family:Arial,sans-serif; background:#f3f6fb; color:#17233c; }
+    header { background:#123c7a; color:white; padding:20px; text-align:center; }
+    nav { background:white; padding:12px; text-align:center; position:sticky; top:0; }
+    nav a { color:#123c7a; margin:0 8px; text-decoration:none; font-weight:bold; }
+    .hero { background:#dceaff; padding:35px 20px; text-align:center; }
+    .container { max-width:950px; margin:25px auto; padding:0 15px; }
+    .card { background:white; padding:20px; margin:15px 0; border-radius:12px; box-shadow:0 3px 12px #00000012; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; }
+    button { background:#1763c6; color:white; border:0; padding:12px 17px; border-radius:8px; cursor:pointer; margin:4px 2px; font-size:15px; }
+    button:hover { background:#0d478f; }
+    input,select { width:100%; padding:12px; margin:8px 0 15px; border:1px solid #ccd5e2; border-radius:7px; font-size:16px; }
+    label { font-weight:bold; }
+    .hidden { display:none; }
+    .message { color:#1763c6; font-weight:bold; overflow-wrap:anywhere; }
+    .muted { color:#53627a; }
+    .item { border-top:1px solid #e2e8f0; padding:14px 0; }
+    footer { text-align:center; padding:25px; background:#123c7a; color:white; margin-top:35px; }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>LearnHub Ghana</h1>
-    <p>Learn. Connect. Succeed.</p>
-  </header>
+<header>
+  <h1>LearnHub Ghana</h1>
+  <p>Learn. Connect. Succeed.</p>
+</header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#classes">Classes</a>
-    <a href="#library">Library</a>
-    <a href="#join">Join</a>
-  </nav>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#library">Library</a>
+  <a href="#quiz">Quizzes</a>
+  <a href="#classes">Live Classes</a>
+  <a href="#join">Join</a>
+</nav>
 
-  <section class="hero" id="home">
-    <h2>Welcome to LearnHub Ghana</h2>
-    <p>A place for students and teachers to learn together.</p>
-    <button onclick="document.getElementById('join').scrollIntoView()">
-      Get Started
-    </button>
-  </section>
+<section class="hero" id="home">
+  <h2>Welcome to LearnHub Ghana</h2>
+  <p>A place for students and teachers to learn together.</p>
+  <button onclick="document.getElementById('join').scrollIntoView()">Get Started</button>
+</section>
 
-  <main class="container">
-    <h2>What you can do</h2>
+<main class="container">
 
-    <div class="cards">
-      <section class="card" id="classes">
-        <h3>Live Classes</h3>
-        <p>Prepare for online lessons with your teachers.</p>
-        <button onclick="showMessage('Live classes are coming soon!')">
-          View Classes
-        </button>
-      </section>
+  <section class="card" id="join">
+    <h2>Join LearnHub Ghana</h2>
+    <p>Create an account or sign in with your Google account.</p>
 
-      <section class="card" id="library">
-        <h3>Learning Library</h3>
-        <p>Find learning materials and study resources.</p>
-        <button onclick="showMessage('The learning library is coming soon!')">
-          Open Library
-        </button>
-      </section>
-
-      <section class="card">
-        <h3>Quizzes</h3>
-        <p>Practise what you have learned.</p>
-        <button onclick="showMessage('Quizzes are coming soon!')">
-          Start Quiz
-        </button>
-      </section>
-    </div>
-
-    <section class="card" id="join" style="margin-top:25px;">
-      <h2>Join LearnHub Ghana</h2>
-      <p>Create an account or sign in.</p>
-
-      <label for="studentName">Your name</label>
-      <input id="studentName" type="text" placeholder="Enter your name">
-
-      <label for="role">I am a</label>
-      <select id="role">
-        <option>Student</option>
-        <option>Teacher</option>
-      </select>
+    <div id="authForms">
+      <label for="studentName">Your name (for new accounts)</label>
+      <input id="studentName" placeholder="Enter your name">
 
       <label for="email">Email address</label>
       <input id="email" type="email" placeholder="Enter your email">
@@ -160,150 +66,335 @@
       <button onclick="signUp()">Create Account</button>
       <button onclick="signIn()">Sign In</button>
       <button onclick="googleSignIn()">Continue with Google</button>
+    </div>
 
-      <p id="accountMessage" aria-live="polite"></p>
+    <p id="accountMessage" class="message" aria-live="polite"></p>
 
-      <div id="signedInArea" class="hidden">
-        <p id="signedInText"></p>
-        <button onclick="signOutUser()">Sign Out</button>
+    <div id="signedInArea" class="hidden">
+      <p id="signedInText"></p>
+      <button onclick="signOutUser()">Sign Out</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="dashboard">
+    <h2>Student Dashboard</h2>
+    <p id="welcomeText"></p>
+    <p class="muted">Choose a learning area below.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Learning Library</h3>
+        <p>Read study notes and materials.</p>
+        <button onclick="document.getElementById('library').scrollIntoView()">Open Library</button>
       </div>
+      <div class="card">
+        <h3>Quizzes</h3>
+        <p>Answer questions and see your score.</p>
+        <button onclick="document.getElementById('quiz').scrollIntoView()">Start Quiz</button>
+      </div>
+      <div class="card">
+        <h3>Live Classes</h3>
+        <p>Find your teacher’s online class link.</p>
+        <button onclick="document.getElementById('classes').scrollIntoView()">View Classes</button>
+      </div>
+    </div>
+  </section>
 
-      <p id="message" aria-live="polite"></p>
-    </section>
-  </main>
+  <section class="card" id="library">
+    <h2>Learning Library</h2>
+    <p class="muted">Study materials added by LearnHub administrators will appear here.</p>
+    <div id="libraryList">Sign in to load learning materials.</div>
+  </section>
 
-  <footer>
-    <p>© 2026 LearnHub Ghana</p>
-    <p>Learning together, growing together.</p>
-  </footer>
+  <section class="card" id="quiz">
+    <h2>Practice Quiz</h2>
+    <p>Answer these questions and submit to see your score.</p>
+    <form id="quizForm">
+      <p><strong>1. What does HTML stand for?</strong></p>
+      <label><input type="radio" name="q1" value="a" style="width:auto"> Hyper Text Markup Language</label><br>
+      <label><input type="radio" name="q1" value="b" style="width:auto"> High Text Machine Language</label><br>
+      <label><input type="radio" name="q1" value="c" style="width:auto"> Home Tool Markup Language</label>
 
-  <script>
-    function showMessage(text) {
-      document.getElementById("message").textContent = text;
+      <p><strong>2. Which tag creates a main heading in HTML?</strong></p>
+      <label><input type="radio" name="q2" value="a" style="width:auto"> &lt;p&gt;</label><br>
+      <label><input type="radio" name="q2" value="b" style="width:auto"> &lt;h1&gt;</label><br>
+      <label><input type="radio" name="q2" value="c" style="width:auto"> &lt;img&gt;</label>
+
+      <p><strong>3. Which language is used to add interactivity to a website?</strong></p>
+      <label><input type="radio" name="q3" value="a" style="width:auto"> CSS</label><br>
+      <label><input type="radio" name="q3" value="b" style="width:auto"> HTML</label><br>
+      <label><input type="radio" name="q3" value="c" style="width:auto"> JavaScript</label><br><br>
+
+      <button type="submit">Submit Quiz</button>
+    </form>
+    <p id="quizResult" class="message" aria-live="polite"></p>
+    <h3>My Recent Quiz Results</h3>
+    <div id="myResults">Sign in to view your saved results.</div>
+  </section>
+
+  <section class="card" id="classes">
+    <h2>Live Classes</h2>
+    <p class="muted">Your teacher’s class information and meeting link will appear here.</p>
+    <div id="classList">Sign in to load live classes.</div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 LearnHub Ghana</p>
+  <p>Learning together, growing together.</p>
+</footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+    updateProfile
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getFirestore, doc, getDoc, setDoc, collection, addDoc,
+    query, where, orderBy, limit, onSnapshot, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCeujDskpEkThTiNtNzQMtZsVxVXog3iPk",
+    authDomain: "learnhub-ghana.firebaseapp.com",
+    projectId: "learnhub-ghana",
+    storageBucket: "learnhub-ghana.firebasestorage.app",
+    messagingSenderId: "19839325015",
+    appId: "1:19839325015:web:83ffc18d729273b5f32412"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
+
+  const el = id => document.getElementById(id);
+
+  function say(id, message) {
+    el(id).textContent = message;
+  }
+
+  function getCredentials() {
+    const email = el("email").value.trim();
+    const password = el("password").value;
+    if (!email || !password) {
+      say("accountMessage", "Enter your email and password.");
+      return null;
     }
+    return { email, password };
+  }
 
-    function joinHub() {
-      const name = document.getElementById("studentName").value.trim();
-      const role = document.getElementById("role").value;
-
-      if (name === "") {
-        showMessage("Please enter your name first.");
-      } else {
-        showMessage("Welcome, " + name + "! You selected " + role + ".");
-      }
+  window.signUp = async () => {
+    const details = getCredentials();
+    if (!details) return;
+    const name = el("studentName").value.trim();
+    if (!name) {
+      say("accountMessage", "Please enter your name.");
+      return;
     }
-    window.showMessage = showMessage;
-    window.joinHub = joinHub;
-  </script>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import {
-      getAuth,
-      createUserWithEmailAndPassword,
-      signInWithEmailAndPassword,
-      GoogleAuthProvider,
-      signInWithPopup,
-      signOut,
-      onAuthStateChanged,
-      updateProfile
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCeujDskpEkThTiNtNzQMtZsVxVXog3iPk",
-      authDomain: "learnhub-ghana.firebaseapp.com",
-      projectId: "learnhub-ghana",
-      storageBucket: "learnhub-ghana.firebasestorage.app",
-      messagingSenderId: "19839325015",
-      appId: "1:19839325015:web:83ffc18d729273b5f32412"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const googleProvider = new GoogleAuthProvider();
-
-    function accountMessage(text) {
-      document.getElementById("accountMessage").textContent = text;
+    try {
+      say("accountMessage", "Creating your account...");
+      const result = await createUserWithEmailAndPassword(auth, details.email, details.password);
+      await updateProfile(result.user, { displayName: name });
+      await saveUserProfile(result.user);
+      say("accountMessage", "Account created. Welcome!");
+    } catch (error) {
+      say("accountMessage", error.message);
     }
+  };
 
-    function getEmailAndPassword() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-
-      if (!email || !password) {
-        accountMessage("Please enter your email and password.");
-        return null;
-      }
-      return { email, password };
+  window.signIn = async () => {
+    const details = getCredentials();
+    if (!details) return;
+    try {
+      say("accountMessage", "Signing in...");
+      await signInWithEmailAndPassword(auth, details.email, details.password);
+      say("accountMessage", "You are signed in!");
+    } catch (error) {
+      say("accountMessage", error.message);
     }
+  };
 
-    window.signUp = async function () {
-      const details = getEmailAndPassword();
-      if (!details) return;
+  window.googleSignIn = async () => {
+    try {
+      say("accountMessage", "Opening Google sign-in...");
+      await signInWithPopup(auth, googleProvider);
+      say("accountMessage", "Google sign-in successful!");
+    } catch (error) {
+      say("accountMessage", error.message);
+    }
+  };
 
-      const name = document.getElementById("studentName").value.trim();
-      if (!name) {
-        accountMessage("Please enter your name first.");
+  window.signOutUser = async () => {
+    try {
+      await signOut(auth);
+      say("accountMessage", "You have signed out.");
+    } catch (error) {
+      say("accountMessage", error.message);
+    }
+  };
+
+  async function saveUserProfile(user) {
+    const profileRef = doc(db, "users", user.uid);
+    const existing = await getDoc(profileRef);
+    if (!existing.exists()) {
+      await setDoc(profileRef, {
+        name: user.displayName || "Student",
+        email: user.email || "",
+        role: "student",
+        createdAt: serverTimestamp()
+      });
+    }
+  }
+
+  function addTextItem(parent, title, detail) {
+    const item = document.createElement("div");
+    item.className = "item";
+    const heading = document.createElement("h3");
+    heading.textContent = title || "Untitled";
+    const paragraph = document.createElement("p");
+    paragraph.textContent = detail || "";
+    item.append(heading, paragraph);
+    parent.appendChild(item);
+    return item;
+  }
+
+  function loadLibrary() {
+    onSnapshot(collection(db, "materials"), snapshot => {
+      const list = el("libraryList");
+      list.replaceChildren();
+      if (snapshot.empty) {
+        list.textContent = "No materials have been added yet.";
         return;
       }
+      snapshot.forEach(record => {
+        const data = record.data();
+        addTextItem(list, data.title, (data.subject ? data.subject + " — " : "") + (data.content || ""));
+        if (data.url) {
+          const link = document.createElement("a");
+          link.href = data.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "Open learning material";
+          list.lastChild.appendChild(link);
+        }
+      });
+    }, error => say("libraryList", "Could not load materials: " + error.message));
+  }
 
-      try {
-        accountMessage("Creating your account...");
-        const result = await createUserWithEmailAndPassword(
-          auth, details.email, details.password
-        );
-        await updateProfile(result.user, { displayName: name });
-        accountMessage("Your account has been created. Welcome!");
-      } catch (error) {
-        accountMessage(error.message);
+  function loadClasses() {
+    onSnapshot(collection(db, "classes"), snapshot => {
+      const list = el("classList");
+      list.replaceChildren();
+      if (snapshot.empty) {
+        list.textContent = "No classes have been added yet.";
+        return;
       }
-    };
+      snapshot.forEach(record => {
+        const data = record.data();
+        const item = addTextItem(list, data.title, [data.teacher, data.time].filter(Boolean).join(" — "));
+        if (data.meetUrl) {
+          try {
+            const url = new URL(data.meetUrl);
+            if (url.protocol === "https:" && (url.hostname === "meet.google.com" || url.hostname.endsWith(".meet.google.com"))) {
+              const link = document.createElement("a");
+              link.href = url.href;
+              link.target = "_blank";
+              link.rel = "noopener noreferrer";
+              link.textContent = "Join Google Meet";
+              item.appendChild(link);
+            } else {
+              item.append("Meeting link not available.");
+            }
+          } catch {
+            item.append("Meeting link not available.");
+          }
+        }
+      });
+    }, error => say("classList", "Could not load classes: " + error.message));
+  }
 
-    window.signIn = async function () {
-      const details = getEmailAndPassword();
-      if (!details) return;
+  async function loadResults(user) {
+    const resultsBox = el("myResults");
+    try {
+      const resultsQuery = query(
+        collection(db, "quizResults"),
+        where("userId", "==", user.uid),
+        orderBy("submittedAt", "desc"),
+        limit(5)
+      );
+      onSnapshot(resultsQuery, snapshot => {
+        resultsBox.replaceChildren();
+        if (snapshot.empty) {
+          resultsBox.textContent = "No quiz results saved yet.";
+          return;
+        }
+        snapshot.forEach(record => {
+          const data = record.data();
+          addTextItem(resultsBox, "Score: " + data.score + " / " + data.total,
+            "Quiz: " + (data.quizName || "HTML Basics"));
+        });
+      }, error => say("myResults", "Could not load results: " + error.message));
+    } catch (error) {
+      say("myResults", error.message);
+    }
+  }
 
-      try {
-        accountMessage("Signing you in...");
-        await signInWithEmailAndPassword(auth, details.email, details.password);
-        accountMessage("You are signed in!");
-      } catch (error) {
-        accountMessage(error.message);
-      }
-    };
+  el("quizForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    const user = auth.currentUser;
+    if (!user) {
+      say("quizResult", "Please sign in before submitting your quiz.");
+      return;
+    }
+    const answers = new FormData(el("quizForm"));
+    const correct = { q1:"a", q2:"b", q3:"c" };
+    let score = 0;
+    for (const question of Object.keys(correct)) {
+      if (answers.get(question) === correct[question]) score++;
+    }
+    say("quizResult", "You scored " + score + " out of 3.");
+    try {
+      await addDoc(collection(db, "quizResults"), {
+        userId: user.uid,
+        quizName: "HTML Basics",
+        score,
+        total: 3,
+        submittedAt: serverTimestamp()
+      });
+      say("quizResult", "You scored " + score + " out of 3. Your result has been saved!");
+    } catch (error) {
+      say("quizResult", "Your score is " + score + " out of 3, but it could not be saved: " + error.message);
+    }
+  });
 
-    window.googleSignIn = async function () {
-      try {
-        accountMessage("Opening Google sign-in...");
-        await signInWithPopup(auth, googleProvider);
-        accountMessage("You are signed in with Google!");
-      } catch (error) {
-        accountMessage(error.message);
-      }
-    };
+  onAuthStateChanged(auth, async user => {
+    if (!user) {
+      el("authForms").classList.remove("hidden");
+      el("signedInArea").classList.add("hidden");
+      el("dashboard").classList.add("hidden");
+      say("libraryList", "Sign in to load learning materials.");
+      say("classList", "Sign in to load live classes.");
+      say("myResults", "Sign in to view your saved results.");
+      return;
+    }
 
-    window.signOutUser = async function () {
-      try {
-        await signOut(auth);
-        accountMessage("You have signed out.");
-      } catch (error) {
-        accountMessage(error.message);
-      }
-    };
-
-    onAuthStateChanged(auth, (user) => {
-      const area = document.getElementById("signedInArea");
-      const text = document.getElementById("signedInText");
-
-      if (user) {
-        area.classList.remove("hidden");
-        text.textContent = "Signed in as " + (user.displayName || user.email);
-      } else {
-        area.classList.add("hidden");
-        text.textContent = "";
-      }
-    });
-  </script>
-
+    el("authForms").classList.add("hidden");
+    el("signedInArea").classList.remove("hidden");
+    el("dashboard").classList.remove("hidden");
+    say("signedInText", "Signed in as " + (user.displayName || user.email));
+    say("welcomeText", "Welcome, " + (user.displayName || "student") + "!");
+    try {
+      await saveUserProfile(user);
+      loadLibrary();
+      loadClasses();
+      loadResults(user);
+    } catch (error) {
+      say("accountMessage", "Signed in, but database setup needs attention: " + error.message);
+    }
+  });
+</script>
 </body>
 </html>
