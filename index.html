@@ -1,2058 +1,2025 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearnHub Ghana</title>  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f6fb;
-      color: #17233c;
-    }
-
-    header {
-      background: #123c7a;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background: white;
-      padding: 12px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 8px #00000010;
-    }
-
-    nav a {
-      color: #123c7a;
-      margin: 0 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
-      background: #dceaff;
-      padding: 35px 20px;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 25px auto;
-      padding: 0 15px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px #00000012;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-
-    button {
-      background: #1763c6;
-      color: white;
-      border: 0;
-      padding: 12px 17px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin: 4px 2px;
-      font-size: 15px;
-    }
-
-    button:hover {
-      background: #0d478f;
-    }
-
-    button.danger {
-      background: #c62828;
-    }
-
-    button.green {
-      background: #16803c;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0 15px;
-      border: 1px solid #ccd5e2;
-      border-radius: 7px;
-      font-size: 16px;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .message {
-      color: #1763c6;
-      font-weight: bold;
-      overflow-wrap: anywhere;
-    }
-
-    .error {
-      color: #c62828;
-      font-weight: bold;
-    }
-
-    .success {
-      color: #16803c;
-      font-weight: bold;
-    }
-
-    .muted {
-      color: #53627a;
-    }
-
-    .item {
-      border-top: 1px solid #e2e8f0;
-      padding: 14px 0;
-    }
-
-    .question-box {
-      border: 1px solid #d8e0eb;
-      padding: 15px;
-      margin: 12px 0;
-      border-radius: 10px;
-      background: #f9fbfe;
-    }
-
-    .option {
-      display: block;
-      font-weight: normal;
-      margin: 8px 0;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 5px 9px;
-      border-radius: 15px;
-      background: #e5efff;
-      color: #123c7a;
-      font-size: 13px;
-      margin: 3px;
-    }
-
-    .teacher-box {
-      border-left: 5px solid #1763c6;
-      padding-left: 15px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #123c7a;
-      color: white;
-      margin-top: 35px;
-    }
-  </style></head><body><header>
-  <h1>LearnHub Ghana</h1>
-  <p>Learn. Connect. Succeed.</p>
-</header><nav>
-  <a href="#home">Home</a>
-  <a href="#dashboard">Dashboard</a>
-  <a href="#library">Library</a>
-  <a href="#quizzes">Quizzes</a>
-  <a href="#classes">Live Classes</a>
-  <a href="#join">Join</a>
-</nav><section class="hero" id="home">
-  <h2>Welcome to LearnHub Ghana</h2>
-  <p>A place for students and teachers to learn together.</p>
-  <button onclick="document.getElementById('join').scrollIntoView()">Get Started</button>
-</section><main class="container">  <!-- AUTHENTICATION -->  <section class="card" id="join">
-    <h2>Join LearnHub Ghana</h2>
-    <p>Create an account or sign in.</p><div id="authForms">
-
-  <label for="studentName">Full name</label>
-  <input id="studentName" placeholder="Enter your full name">
-
-  <label for="accountRole">Account type</label>
-  <select id="accountRole">
-    <option value="student">👨‍🎓 Student</option>
-    <option value="teacher">👨‍🏫 Teacher</option>
-  </select>
-
-  <label for="email">Email address</label>
-  <input id="email" type="email" placeholder="Enter your email">
-
-  <label for="password">Password</label>
-  <input id="password" type="password" placeholder="At least 6 characters">
-
-  <button onclick="signUp()">Create Account</button>
-  <button onclick="signIn()">Sign In</button>
-  <button onclick="googleSignIn()">Continue with Google</button>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnHub Ghana</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#17233c}
+header,footer{background:#123c7a;color:white;text-align:center;padding:20px}
+nav{background:white;padding:12px;text-align:center;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0001}
+nav a{color:#123c7a;margin:0 7px;text-decoration:none;font-weight:bold}
+.hero{background:#dceaff;padding:30px 15px;text-align:center}.container{max-width:1000px;margin:22px auto;padding:0 14px}
+.card{background:white;padding:18px;margin:14px 0;border-radius:12px;box-shadow:0 3px 12px #00000012}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+button{background:#1763c6;color:white;border:0;padding:12px 16px;border-radius:8px;cursor:pointer;margin:4px 2px;font-size:15px}
+button.green{background:#16803c}button.danger{background:#b3261e}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 13px;border:1px solid #ccd5e2;border-radius:7px;font-size:16px}
+label{font-weight:bold}.hidden{display:none!important}.message{color:#1763c6;font-weight:bold;overflow-wrap:anywhere}
+.error{color:#b3261e}.success{color:#16803c}.muted{color:#53627a}.item{border-top:1px solid #e2e8f0;padding:13px 0}
+.question-box{border:1px solid #d8e0eb;padding:14px;margin:12px 0;border-radius:10px;background:#f9fbfe}
+.option{display:block;font-weight:normal;margin:8px 0}.option input{width:auto}
+.teacher-box{border-left:5px solid #1763c6}.badge{display:inline-block;padding:5px 9px;border-radius:15px;background:#e5efff;color:#123c7a;font-size:13px;margin:3px}
+</style>
+</head>
+<body>
+<header><h1>LearnHub Ghana</h1><p>Learn. Connect. Succeed.</p></header>
+<nav>
+<a href="#home">Home</a><a href="#dashboard">Dashboard</a><a href="#library">Library</a>
+<a href="#quizzes">Quizzes</a><a href="#classes">Live Classes</a><a href="#join">Join</a>
+</nav>
+<section class="hero" id="home"><h2>Welcome to LearnHub Ghana</h2>
+<p>A place for students and teachers to learn together.</p>
+<button onclick="document.getElementById('join').scrollIntoView()">Get Started</button></section>
+<main class="container">
+<section class="card" id="join"><h2>Join LearnHub Ghana</h2>
+<div id="authForms">
+<label>Full name</label><input id="studentName" placeholder="Enter your full name">
+<label>Email address</label><input id="email" type="email" placeholder="Enter your email">
+<label>Password</label><input id="password" type="password" placeholder="At least 6 characters">
+<button onclick="signUp()">Create Student Account</button>
+<button onclick="signIn()">Sign In</button>
+<button onclick="googleSignIn()">Continue with Google</button>
+<p class="muted">To become a teacher, create a student account and submit a teacher request after signing in. The owner must approve it.</p>
 </div>
-
 <p id="accountMessage" class="message" aria-live="polite"></p>
+<div id="signedInArea" class="hidden"><p id="signedInText"></p><button onclick="signOutUser()">Sign Out</button></div>
+</section>
 
-<div id="signedInArea" class="hidden">
-  <p id="signedInText"></p>
-  <button onclick="signOutUser()">Sign Out</button>
+<section class="card hidden" id="studentDashboard"><h2>👨‍🎓 Student Dashboard</h2><p id="welcomeText"></p>
+<div class="cards">
+<div class="card"><h3>📚 Learning Library</h3><button onclick="go('library')">Open Library</button></div>
+<div class="card"><h3>📝 Quizzes</h3><button onclick="go('quizzes')">View Quizzes</button></div>
+<div class="card"><h3>📊 My Results</h3><button onclick="go('studentResults')">View Results</button></div>
+<div class="card"><h3>🎥 Live Classes</h3><button onclick="go('classes')">View Classes</button></div>
 </div>
+<div class="card"><h3>Request teacher access</h3><p id="teacherRequestStatus" class="muted"></p><button class="green" onclick="requestTeacher()">Request Teacher Approval</button></div>
+</section>
 
-  </section>  <!-- STUDENT DASHBOARD -->  <section class="card hidden" id="studentDashboard">
-    <h2>👨‍🎓 Student Dashboard</h2>
-    <p id="welcomeText"></p><div class="cards">
+<section class="card hidden" id="teacherDashboard"><h2>👨‍🏫 Teacher Dashboard</h2><p id="teacherWelcome"></p>
+<div class="card teacher-box"><h3>📚 Add Subject / Topic</h3>
+<label>Subject name</label><input id="subjectName" placeholder="Mathematics">
+<label>Topic</label><input id="subjectTopic" placeholder="Fractions">
+<button class="green" onclick="addSubject()">Add Subject</button><p id="subjectMessage" class="message"></p></div>
+<div class="card teacher-box"><h3>📝 Create Quiz</h3>
+<label>Quiz title</label><input id="quizTitle" placeholder="Basic Mathematics Quiz">
+<label>Subject</label><input id="quizSubject" placeholder="Mathematics">
+<label>Topic</label><input id="quizTopic" placeholder="Fractions">
+<label>Class / Level</label><input id="quizClass" placeholder="JHS 1">
+<h3>Questions</h3><div id="questionBuilder"></div>
+<button onclick="addQuestionBox()">➕ Add Question</button>
+<button class="green" onclick="publishQuiz()">📢 Publish Quiz</button><p id="quizCreateMessage" class="message"></p></div>
+<div class="card teacher-box"><h3>My Quizzes</h3><div id="teacherQuizList">Sign in to load.</div></div>
+<div class="card teacher-box"><h3>Student Results</h3><div id="teacherResults">Sign in to load.</div></div>
+</section>
 
-  <div class="card">
-    <h3>📚 Learning Library</h3>
-    <p>Read study notes and materials.</p>
-    <button onclick="document.getElementById('library').scrollIntoView()">
-      Open Library
-    </button>
-  </div>
+<section class="card hidden" id="ownerDashboard"><h2>🔐 Owner Dashboard</h2><p>Approve teacher requests here.</p><div id="teacherRequests">Loading requests...</div></section>
+<section class="card" id="library"><h2>Learning Library</h2><div id="libraryList">Sign in to load materials.</div></section>
+<section class="card" id="quizzes"><h2>📝 Available Quizzes</h2><div id="availableQuizzes">Sign in to view quizzes.</div></section>
+<section class="card hidden" id="quizPlayer"><h2 id="playingQuizTitle"></h2><p id="playingQuizInfo" class="muted"></p>
+<form id="dynamicQuizForm"></form><button onclick="submitDynamicQuiz()">✅ Submit Quiz</button><p id="dynamicQuizResult" class="message"></p></section>
+<section class="card" id="studentResults"><h2>📊 My Recent Results</h2><div id="myResults">Sign in to view results.</div></section>
+<section class="card" id="classes"><h2>🎥 Live Classes</h2><div id="classList">Sign in to load classes.</div></section>
+</main>
+<footer><p>© 2026 LearnHub Ghana</p><p>Learning together, growing together.</p></footer><script>
+/* ==============================
+   LEARNHUB GHANA - PART 2
+   Authentication and Dashboard
+   ============================== */
 
-  <div class="card">
-    <h3>📝 Quizzes</h3>
-    <p>Take quizzes created by teachers.</p>
-    <button onclick="document.getElementById('quizzes').scrollIntoView()">
-      View Quizzes
-    </button>
-  </div>
+let currentUser = null;
+let users = JSON.parse(localStorage.getItem("learnhub_users") || "[]");
+let subjects = JSON.parse(localStorage.getItem("learnhub_subjects") || "[]");
+let quizzes = JSON.parse(localStorage.getItem("learnhub_quizzes") || "[]");
+let results = JSON.parse(localStorage.getItem("learnhub_results") || "[]");
+let teacherRequests = JSON.parse(localStorage.getItem("learnhub_teacher_requests") || "[]");
 
-  <div class="card">
-    <h3>📊 My Results</h3>
-    <p>View your recent quiz scores.</p>
-    <button onclick="document.getElementById('studentResults').scrollIntoView()">
-      View Results
-    </button>
-  </div>
+/* Owner account */
+const OWNER_EMAIL = "owner@learnhubghana.com";
 
-  <div class="card">
-    <h3>🎥 Live Classes</h3>
-    <p>Find your teacher's online class.</p>
-    <button onclick="document.getElementById('classes').scrollIntoView()">
-      View Classes
-    </button>
-  </div>
+/* Save data */
+function saveData() {
+  localStorage.setItem("learnhub_users", JSON.stringify(users));
+  localStorage.setItem("learnhub_subjects", JSON.stringify(subjects));
+  localStorage.setItem("learnhub_quizzes", JSON.stringify(quizzes));
+  localStorage.setItem("learnhub_results", JSON.stringify(results));
+  localStorage.setItem("learnhub_teacher_requests", JSON.stringify(teacherRequests));
+}
 
-</div>
+/* Create account */
+function signUp() {
+  const name = document.getElementById("studentName").value.trim();
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const password = document.getElementById("password").value;
 
-  </section>  <!-- TEACHER DASHBOARD -->  <section class="card hidden" id="teacherDashboard"><h2>👨‍🏫 Teacher Dashboard</h2>
+  if (!name || !email || !password) {
+    showMessage("accountMessage", "Please fill in all fields.", "error");
+    return;
+  }
 
-<p id="teacherWelcome"></p>
+  if (password.length < 6) {
+    showMessage("accountMessage", "Password must be at least 6 characters.", "error");
+    return;
+  }
 
-<!-- SUBJECT CREATOR -->
-<div class="card teacher-box">
+  if (users.some(u => u.email === email)) {
+    showMessage("accountMessage", "An account with this email already exists.", "error");
+    return;
+  }
 
-  <h3>📚 Add Subject / Topic</h3>
-
-  <label>Subject name</label>
-  <input id="subjectName" placeholder="Example: Mathematics">
-
-  <label>Topic</label>
-  <input id="subjectTopic" placeholder="Example: Fractions">
-
-  <button class="green" onclick="addSubject()">
-    Add Subject
-  </button>
-
-  <p id="subjectMessage" class="message"></p>
-
-</div>
-
-
-<!-- QUIZ CREATOR -->
-<div class="card teacher-box">
-
-  <h3>📝 Create Quiz</h3>
-
-  <label>Quiz title</label>
-  <input id="quizTitle" placeholder="Example: Basic Mathematics Quiz">
-
-  <label>Subject</label>
-  <input id="quizSubject" placeholder="Example: Mathematics">
-
-  <label>Topic</label>
-  <input id="quizTopic" placeholder="Example: Fractions">
-
-  <label>Class / Level</label>
-  <input id="quizClass" placeholder="Example: JHS 1">
-
-  <h3>Questions</h3>
-
-  <div id="questionBuilder"></div>
-
-  <button onclick="addQuestionBox()">
-    ➕ Add Question
-  </button>
-
-  <br>
-
-  <button class="green" onclick="publishQuiz()">
-    📢 Publish Quiz
-  </button>
-
-  <p id="quizCreateMessage" class="message"></p>
-
-</div>
-
-
-<!-- TEACHER'S QUIZZES -->
-<div class="card teacher-box">
-
-  <h3>📋 My Quizzes</h3>
-
-  <div id="teacherQuizList">
-    Loading quizzes...
-  </div>
-
-</div>
-
-
-<!-- TEACHER RESULTS -->
-<div class="card teacher-box">
-
-  <h3>📊 Student Results</h3>
-
-  <div id="teacherResults">
-    Loading student results...
-  </div>
-
-</div>
-
-  </section>  <!-- LIBRARY -->  <section class="card" id="library"><h2>Learning Library</h2>
-
-<p class="muted">
-  Study materials added by LearnHub Ghana will appear here.
-</p>
-
-<div id="libraryList">
-  Sign in to load learning materials.
-</div>
-
-  </section>  <!-- AVAILABLE QUIZZES -->  <section class="card" id="quizzes"><h2>📝 Available Quizzes</h2>
-
-<p class="muted">
-  Quizzes published by teachers will appear here.
-</p>
-
-<div id="availableQuizzes">
-  Sign in to view quizzes.
-</div>
-
-  </section>  <!-- QUIZ PLAYER -->  <section class="card hidden" id="quizPlayer"><h2 id="playingQuizTitle"></h2>
-
-<p id="playingQuizInfo" class="muted"></p>
-
-<form id="dynamicQuizForm"></form>
-
-<button onclick="submitDynamicQuiz()">
-  ✅ Submit Quiz
-</button>
-
-<p id="dynamicQuizResult" class="message"></p>
-
-  </section>  <!-- STUDENT RESULTS -->  <section class="card" id="studentResults"><h2>📊 My Recent Results</h2>
-
-<div id="myResults">
-  Sign in to view your saved results.
-</div>
-
-  </section>  <!-- LIVE CLASSES -->  <section class="card" id="classes"><h2>🎥 Live Classes</h2>
-
-<p class="muted">
-  Your teacher's class information and meeting link will appear here.
-</p>
-
-<div id="classList">
-  Sign in to load live classes.
-</div>
-
-  </section></main><footer>
-  <p>© 2026 LearnHub Ghana</p>
-  <p>Learning together, growing together.</p>
-</footer><script type="module">
-
-  import { initializeApp } from
-  "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup,
-    signOut,
-    onAuthStateChanged,
-    updateProfile
-  } from
-  "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-  import {
-    getFirestore,
-    doc,
-    getDoc,
-    setDoc,
-    collection,
-    addDoc,
-    query,
-    where,
-    onSnapshot,
-    serverTimestamp,
-    getDocs
-  } from
-  "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-
-  /* FIREBASE */
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCeujDskpEkThTiNtNzQMtZsVxVXog3iPk",
-    authDomain: "learnhub-ghana.firebaseapp.com",
-    projectId: "learnhub-ghana",
-    storageBucket: "learnhub-ghana.firebasestorage.app",
-    messagingSenderId: "19839325015",
-    appId: "1:19839325015:web:83ffc18d729273b5f32412"
+  const user = {
+    id: Date.now().toString(),
+    name: name,
+    email: email,
+    password: password,
+    role: "student",
+    teacherApproved: false,
+    createdAt: new Date().toISOString()
   };
 
+  users.push(user);
+  currentUser = user;
+  saveData();
 
-  const app = initializeApp(firebaseConfig);
+  showMessage("accountMessage", "Account created successfully!", "success");
+  updateUI();
+}
 
-  const auth = getAuth(app);
+/* Sign in */
+function signIn() {
+  const email = document.getElementById("email").value.trim().toLowerCase();
+  const password = document.getElementById("password").value;
 
-  const db = getFirestore(app);
-
-  const googleProvider = new GoogleAuthProvider();
-
-
-  const el = id => document.getElementById(id);
-
-
-  let currentUserProfile = null;
-
-  let currentQuiz = null;
-
-
-  function say(id, message) {
-    el(id).textContent = message;
+  if (!email || !password) {
+    showMessage("accountMessage", "Enter your email and password.", "error");
+    return;
   }
 
+  if (email === OWNER_EMAIL) {
+    currentUser = {
+      id: "owner",
+      name: "LearnHub Owner",
+      email: OWNER_EMAIL,
+      role: "owner"
+    };
 
-  /* =========================
-     AUTHENTICATION
-     ========================= */
-
-
-  function getCredentials() {
-
-    const email = el("email").value.trim();
-
-    const password = el("password").value;
-
-    if (!email || !password) {
-
-      say(
-        "accountMessage",
-        "Enter your email and password."
-      );
-
-      return null;
-    }
-
-    return { email, password };
+    showMessage("accountMessage", "Owner signed in successfully.", "success");
+    updateUI();
+    return;
   }
 
+  const user = users.find(
+    u => u.email === email && u.password === password
+  );
 
-  window.signUp = async () => {
+  if (!user) {
+    showMessage("accountMessage", "Incorrect email or password.", "error");
+    return;
+  }
 
-    const details = getCredentials();
+  currentUser = user;
 
-    if (!details) return;
+  showMessage("accountMessage", "Signed in successfully!", "success");
+  updateUI();
+}
 
-    const name = el("studentName").value.trim();
+/* Google sign in demo */
+function googleSignIn() {
+  const name = prompt("Enter your Google account name:");
 
-    const role = el("accountRole").value;
+  if (!name) return;
 
-    if (!name) {
+  const email = prompt("Enter your Google email:");
 
-      say(
-        "accountMessage",
-        "Please enter your full name."
+  if (!email) return;
+
+  const cleanEmail = email.trim().toLowerCase();
+
+  let user = users.find(u => u.email === cleanEmail);
+
+  if (!user) {
+    user = {
+      id: Date.now().toString(),
+      name: name.trim(),
+      email: cleanEmail,
+      password: "",
+      role: "student",
+      teacherApproved: false,
+      googleAccount: true,
+      createdAt: new Date().toISOString()
+    };
+
+    users.push(user);
+    saveData();
+  }
+
+  currentUser = user;
+
+  showMessage(
+    "accountMessage",
+    "Google sign-in successful!",
+    "success"
+  );
+
+  updateUI();
+}
+
+/* Sign out */
+function signOutUser() {
+  currentUser = null;
+
+  document.getElementById("signedInArea").classList.add("hidden");
+  document.getElementById("studentDashboard").classList.add("hidden");
+  document.getElementById("teacherDashboard").classList.add("hidden");
+  document.getElementById("ownerDashboard").classList.add("hidden");
+
+  document.getElementById("accountMessage").textContent =
+    "You have signed out.";
+
+  document.getElementById("libraryList").innerHTML =
+    "Sign in to load materials.";
+
+  document.getElementById("availableQuizzes").innerHTML =
+    "Sign in to view quizzes.";
+
+  document.getElementById("myResults").innerHTML =
+    "Sign in to view results.";
+
+  document.getElementById("classList").innerHTML =
+    "Sign in to load classes.";
+}
+
+/* Update page after login */
+function updateUI() {
+  if (!currentUser) return;
+
+  document.getElementById("authForms").classList.add("hidden");
+  document.getElementById("signedInArea").classList.remove("hidden");
+
+  document.getElementById("signedInText").innerHTML =
+    "Signed in as <strong>" +
+    escapeHTML(currentUser.name) +
+    "</strong><br>" +
+    escapeHTML(currentUser.email);
+
+  document.getElementById("studentDashboard").classList.add("hidden");
+  document.getElementById("teacherDashboard").classList.add("hidden");
+  document.getElementById("ownerDashboard").classList.add("hidden");
+
+  if (currentUser.role === "owner") {
+    document.getElementById("ownerDashboard").classList.remove("hidden");
+    loadTeacherRequests();
+  }
+
+  else if (
+    currentUser.role === "teacher" &&
+    currentUser.teacherApproved
+  ) {
+    document.getElementById("teacherDashboard").classList.remove("hidden");
+
+    document.getElementById("teacherWelcome").textContent =
+      "Welcome, " + currentUser.name + "!";
+
+    loadTeacherQuizzes();
+    loadTeacherResults();
+  }
+
+  else {
+    document.getElementById("studentDashboard").classList.remove("hidden");
+
+    document.getElementById("welcomeText").textContent =
+      "Welcome, " + currentUser.name + "!";
+
+    updateTeacherRequestStatus();
+  }
+
+  loadLibrary();
+  loadAvailableQuizzes();
+  loadMyResults();
+  loadClasses();
+}
+
+/* Helper message */
+function showMessage(id, text, type) {
+  const element = document.getElementById(id);
+
+  element.textContent = text;
+  element.className = "message " + (type || "");
+}
+
+/* Navigation */
+function go(sectionId) {
+  const element = document.getElementById(sectionId);
+
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+}
+
+/* Escape HTML */
+function escapeHTML(text) {
+  return String(text)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+/* Request teacher approval */
+function requestTeacher() {
+  if (!currentUser) {
+    alert("Please sign in first.");
+    return;
+  }
+
+  if (currentUser.role === "teacher") {
+    alert("You already have teacher access.");
+    return;
+  }
+
+  const existing = teacherRequests.find(
+    r =>
+      r.userId === currentUser.id &&
+      r.status === "pending"
+  );
+
+  if (existing) {
+    alert("Your teacher request is already pending.");
+    return;
+  }
+
+  teacherRequests.push({
+    id: Date.now().toString(),
+    userId: currentUser.id,
+    name: currentUser.name,
+    email: currentUser.email,
+    status: "pending",
+    createdAt: new Date().toISOString()
+  });
+
+  saveData();
+
+  updateTeacherRequestStatus();
+
+  alert(
+    "Your teacher request has been sent to the owner."
+  );
+}
+
+/* Teacher request status */
+function updateTeacherRequestStatus() {
+  const box = document.getElementById("teacherRequestStatus");
+
+  if (!currentUser) {
+    box.textContent = "Sign in first.";
+    return;
+  }
+
+  const request = teacherRequests.find(
+    r => r.userId === currentUser.id
+  );
+
+  if (!request) {
+    box.textContent =
+      "You have not requested teacher access yet.";
+    return;
+  }
+
+  if (request.status === "pending") {
+    box.textContent =
+      "⏳ Your teacher request is waiting for owner approval.";
+  }
+
+  if (request.status === "approved") {
+    box.textContent =
+      "✅ Your teacher request has been approved.";
+  }
+
+  if (request.status === "rejected") {
+    box.textContent =
+      "❌ Your teacher request was rejected.";
+  }
+}
+</script>/* ==============================
+   LEARNHUB GHANA - PART 3
+   Subjects, Quizzes and Questions
+   ============================== */
+
+/* Add a subject */
+function addSubject() {
+  if (!currentUser || currentUser.role !== "teacher") {
+    alert("Only approved teachers can add subjects.");
+    return;
+  }
+
+  const name = document.getElementById("subjectName").value.trim();
+  const topic = document.getElementById("subjectTopic").value.trim();
+
+  if (!name || !topic) {
+    showMessage(
+      "subjectMessage",
+      "Please enter both subject and topic.",
+      "error"
+    );
+    return;
+  }
+
+  subjects.push({
+    id: Date.now().toString(),
+    name: name,
+    topic: topic,
+    teacherId: currentUser.id,
+    teacherName: currentUser.name,
+    createdAt: new Date().toISOString()
+  });
+
+  saveData();
+
+  document.getElementById("subjectName").value = "";
+  document.getElementById("subjectTopic").value = "";
+
+  showMessage(
+    "subjectMessage",
+    "Subject added successfully!",
+    "success"
+  );
+
+  loadLibrary();
+}
+
+/* Add question box */
+function addQuestionBox() {
+  const builder = document.getElementById("questionBuilder");
+
+  const number = builder.children.length + 1;
+
+  const box = document.createElement("div");
+
+  box.className = "question-box";
+
+  box.innerHTML = `
+    <h4>Question ${number}</h4>
+
+    <label>Question</label>
+    <input
+      class="questionText"
+      placeholder="Enter your question"
+    >
+
+    <label>Option A</label>
+    <input
+      class="optionA"
+      placeholder="Option A"
+    >
+
+    <label>Option B</label>
+    <input
+      class="optionB"
+      placeholder="Option B"
+    >
+
+    <label>Option C</label>
+    <input
+      class="optionC"
+      placeholder="Option C"
+    >
+
+    <label>Option D</label>
+    <input
+      class="optionD"
+      placeholder="Option D"
+    >
+
+    <label>Correct answer</label>
+    <select class="correctAnswer">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+    </select>
+
+    <button
+      type="button"
+      class="danger"
+      onclick="this.parentElement.remove()"
+    >
+      Remove Question
+    </button>
+  `;
+
+  builder.appendChild(box);
+}
+
+/* Create quiz */
+function publishQuiz() {
+  if (!currentUser || currentUser.role !== "teacher") {
+    alert("Only approved teachers can publish quizzes.");
+    return;
+  }
+
+  const title =
+    document.getElementById("quizTitle").value.trim();
+
+  const subject =
+    document.getElementById("quizSubject").value.trim();
+
+  const topic =
+    document.getElementById("quizTopic").value.trim();
+
+  const classLevel =
+    document.getElementById("quizClass").value.trim();
+
+  if (!title || !subject || !topic || !classLevel) {
+    showMessage(
+      "quizCreateMessage",
+      "Please complete the quiz information.",
+      "error"
+    );
+    return;
+  }
+
+  const boxes =
+    document.querySelectorAll("#questionBuilder .question-box");
+
+  if (boxes.length === 0) {
+    showMessage(
+      "quizCreateMessage",
+      "Please add at least one question.",
+      "error"
+    );
+    return;
+  }
+
+  const questions = [];
+
+  for (const box of boxes) {
+    const question =
+      box.querySelector(".questionText").value.trim();
+
+    const A =
+      box.querySelector(".optionA").value.trim();
+
+    const B =
+      box.querySelector(".optionB").value.trim();
+
+    const C =
+      box.querySelector(".optionC").value.trim();
+
+    const D =
+      box.querySelector(".optionD").value.trim();
+
+    const correct =
+      box.querySelector(".correctAnswer").value;
+
+    if (!question || !A || !B || !C || !D) {
+      showMessage(
+        "quizCreateMessage",
+        "Please complete every question and all four options.",
+        "error"
       );
-
       return;
     }
 
-    try {
-
-      say(
-        "accountMessage",
-        "Creating your account..."
-      );
-
-      const result =
-        await createUserWithEmailAndPassword(
-          auth,
-          details.email,
-          details.password
-        );
-
-
-      await updateProfile(
-        result.user,
-        {
-          displayName: name
-        }
-      );
-
-
-      await saveUserProfile(
-        result.user,
-        role
-      );
-
-
-      say(
-        "accountMessage",
-        "Account created successfully!"
-      );
-
-    } catch (error) {
-
-      say(
-        "accountMessage",
-        error.message
-      );
-    }
-  };
-
-
-  window.signIn = async () => {
-
-    const details = getCredentials();
-
-    if (!details) return;
-
-    try {
-
-      say(
-        "accountMessage",
-        "Signing in..."
-      );
-
-      await signInWithEmailAndPassword(
-        auth,
-        details.email,
-        details.password
-      );
-
-      say(
-        "accountMessage",
-        "You are signed in!"
-      );
-
-    } catch (error) {
-
-      say(
-        "accountMessage",
-        error.message
-      );
-    }
-  };
-
-
-  window.googleSignIn = async () => {
-
-    try {
-
-      say(
-        "accountMessage",
-        "Opening Google sign-in..."
-      );
-
-      const result =
-        await signInWithPopup(
-          auth,
-          googleProvider
-        );
-
-
-      await saveUserProfile(
-        result.user,
-        "student"
-      );
-
-
-      say(
-        "accountMessage",
-        "Google sign-in successful!"
-      );
-
-    } catch (error) {
-
-      say(
-        "accountMessage",
-        error.message
-      );
-    }
-  };
-
-
-  window.signOutUser = async () => {
-
-    try {
-
-      await signOut(auth);
-
-      say(
-        "accountMessage",
-        "You have signed out."
-      );
-
-    } catch (error) {
-
-      say(
-        "accountMessage",
-        error.message
-      );
-    }
-  };
-
-
-  async function saveUserProfile(user, selectedRole = "student") {
-
-    const profileRef =
-      doc(db, "users", user.uid);
-
-    const existing =
-      await getDoc(profileRef);
-
-
-    if (!existing.exists()) {
-
-      await setDoc(
-        profileRef,
-        {
-          name: user.displayName || "Student",
-          email: user.email || "",
-          role: selectedRole,
-          createdAt: serverTimestamp()
-        }
-      );
-
-    }
+    questions.push({
+      question: question,
+      options: {
+        A: A,
+        B: B,
+        C: C,
+        D: D
+      },
+      correct: correct
+    });
   }
 
-
-  /* =========================
-     DASHBOARD
-     ========================= */
-
-
-  async function loadUserProfile(user) {
-
-    const profileRef =
-      doc(db, "users", user.uid);
-
-    const profile =
-      await getDoc(profileRef);
-
-
-    if (profile.exists()) {
-
-      currentUserProfile =
-        profile.data();
-
-    } else {
-
-      await saveUserProfile(
-        user,
-        "student"
-      );
-
-      currentUserProfile = {
-        name: user.displayName || "Student",
-        email: user.email || "",
-        role: "student"
-      };
-    }
-
-
-    if (currentUserProfile.role === "teacher") {
-
-      el("teacherDashboard")
-        .classList.remove("hidden");
-
-      el("studentDashboard")
-        .classList.add("hidden");
-
-      say(
-        "teacherWelcome",
-        "Welcome, " +
-        (currentUserProfile.name || "Teacher") +
-        "!"
-      );
-
-      loadTeacherQuizzes(user);
-
-      loadTeacherResults();
-
-    } else {
-
-      el("studentDashboard")
-        .classList.remove("hidden");
-
-      el("teacherDashboard")
-        .classList.add("hidden");
-
-      say(
-        "welcomeText",
-        "Welcome, " +
-        (currentUserProfile.name || "student") +
-        "!"
-      );
-
-      loadAvailableQuizzes();
-
-      loadResults(user);
-    }
-  }
-
-
-  /* =========================
-     SUBJECTS
-     ========================= */
-
-
-  window.addSubject = async () => {
-
-    const name =
-      el("subjectName").value.trim();
-
-    const topic =
-      el("subjectTopic").value.trim();
-
-
-    if (!name || !topic) {
-
-      say(
-        "subjectMessage",
-        "Enter both the subject and topic."
-      );
-
-      return;
-    }
-
-
-    const user = auth.currentUser;
-
-    if (!user) {
-
-      say(
-        "subjectMessage",
-        "Please sign in first."
-      );
-
-      return;
-    }
-
-
-    try {
-
-      await addDoc(
-        collection(db, "subjects"),
-        {
-          name,
-          topic,
-          teacherId: user.uid,
-          teacherName:
-            user.displayName || "",
-          createdAt:
-            serverTimestamp()
-        }
-      );
-
-
-      el("subjectName").value = "";
-
-      el("subjectTopic").value = "";
-
-
-      say(
-        "subjectMessage",
-        "Subject/topic added successfully!"
-      );
-
-    } catch (error) {
-
-      say(
-        "subjectMessage",
-        "Could not add subject: " +
-        error.message
-      );
-    }
+  const quiz = {
+    id: Date.now().toString(),
+    title: title,
+    subject: subject,
+    topic: topic,
+    classLevel: classLevel,
+    teacherId: currentUser.id,
+    teacherName: currentUser.name,
+    questions: questions,
+    createdAt: new Date().toISOString()
   };
 
+  quizzes.push(quiz);
 
-  /* =========================
-     QUIZ CREATOR
-     ========================= */
+  saveData();
 
+  document.getElementById("quizTitle").value = "";
+  document.getElementById("quizSubject").value = "";
+  document.getElementById("quizTopic").value = "";
+  document.getElementById("quizClass").value = "";
+  document.getElementById("questionBuilder").innerHTML = "";
 
-  function addQuestionBox() {
+  showMessage(
+    "quizCreateMessage",
+    "🎉 Quiz published successfully!",
+    "success"
+  );
 
-    const container =
-      el("questionBuilder");
+  loadTeacherQuizzes();
+  loadAvailableQuizzes();
+}
 
+/* Load teacher quizzes */
+function loadTeacherQuizzes() {
+  const box = document.getElementById("teacherQuizList");
 
-    const number =
-      container.children.length + 1;
+  if (!currentUser) {
+    box.textContent = "Sign in to load.";
+    return;
+  }
 
+  const mine = quizzes.filter(
+    q => q.teacherId === currentUser.id
+  );
+
+  if (mine.length === 0) {
+    box.innerHTML =
+      '<p class="muted">You have not created any quizzes yet.</p>';
+    return;
+  }
+
+  box.innerHTML = mine.map(q => `
+    <div class="item">
+      <h3>${escapeHTML(q.title)}</h3>
+      <span class="badge">
+        ${escapeHTML(q.subject)}
+      </span>
+
+      <span class="badge">
+        ${escapeHTML(q.topic)}
+      </span>
+
+      <span class="badge">
+        ${escapeHTML(q.classLevel)}
+      </span>
+
+      <p>
+        ${q.questions.length} question(s)
+      </p>
+    </div>
+  `).join("");
+}
+
+/* Load available quizzes */
+function loadAvailableQuizzes() {
+  const box =
+    document.getElementById("availableQuizzes");
+
+  if (!currentUser) {
+    box.textContent =
+      "Sign in to view quizzes.";
+    return;
+  }
+
+  if (quizzes.length === 0) {
+    box.innerHTML =
+      '<p class="muted">No quizzes have been published yet.</p>';
+    return;
+  }
+
+  box.innerHTML = quizzes.map(q => `
+    <div class="item">
+      <h3>${escapeHTML(q.title)}</h3>
+
+      <span class="badge">
+        ${escapeHTML(q.subject)}
+      </span>
+
+      <span class="badge">
+        ${escapeHTML(q.topic)}
+      </span>
+
+      <span class="badge">
+        ${escapeHTML(q.classLevel)}
+      </span>
+
+      <p>
+        Teacher:
+        ${escapeHTML(q.teacherName)}
+      </p>
+
+      <button
+        onclick="startQuiz('${q.id}')"
+      >
+        Start Quiz
+      </button>
+    </div>
+  `).join("");
+}
+
+/* Start quiz */
+function startQuiz(quizId) {
+  if (!currentUser) {
+    alert("Please sign in first.");
+    return;
+  }
+
+  const quiz = quizzes.find(
+    q => q.id === quizId
+  );
+
+  if (!quiz) {
+    alert("Quiz not found.");
+    return;
+  }
+
+  document.getElementById("quizPlayer")
+    .classList.remove("hidden");
+
+  document.getElementById("playingQuizTitle")
+    .textContent = quiz.title;
+
+  document.getElementById("playingQuizInfo")
+    .textContent =
+      quiz.subject +
+      " • " +
+      quiz.topic +
+      " • " +
+      quiz.classLevel;
+
+  const form =
+    document.getElementById("dynamicQuizForm");
+
+  form.innerHTML = "";
+
+  quiz.questions.forEach((q, index) => {
 
     const box =
       document.createElement("div");
 
-    box.className =
-      "question-box";
-
+    box.className = "question-box";
 
     box.innerHTML = `
+      <h3>
+        ${index + 1}. ${escapeHTML(q.question)}
+      </h3>
 
-      <h4>Question ${number}</h4>
+      <label class="option">
+        <input
+          type="radio"
+          name="question_${index}"
+          value="A"
+        >
+        A. ${escapeHTML(q.options.A)}
+      </label>
 
-      <label>Question</label>
+      <label class="option">
+        <input
+          type="radio"
+          name="question_${index}"
+          value="B"
+        >
+        B. ${escapeHTML(q.options.B)}
+      </label>
 
-      <input
-        class="question-text"
-        placeholder="Enter the question"
-      >
+      <label class="option">
+        <input
+          type="radio"
+          name="question_${index}"
+          value="C"
+        >
+        C. ${escapeHTML(q.options.C)}
+      </label>
 
-      <label>Option A</label>
-
-      <input
-        class="option-a"
-        placeholder="Option A"
-      >
-
-      <label>Option B</label>
-
-      <input
-        class="option-b"
-        placeholder="Option B"
-      >
-
-      <label>Option C</label>
-
-      <input
-        class="option-c"
-        placeholder="Option C"
-      >
-
-      <label>Option D</label>
-
-      <input
-        class="option-d"
-        placeholder="Option D"
-      >
-
-      <label>Correct answer</label>
-
-      <select class="correct-answer">
-
-        <option value="a">Option A</option>
-
-        <option value="b">Option B</option>
-
-        <option value="c">Option C</option>
-
-        <option value="d">Option D</option>
-
-      </select>
-
-      <button
-        type="button"
-        class="danger"
-        onclick="this.parentElement.remove()"
-      >
-        Remove Question
-      </button>
+      <label class="option">
+        <input
+          type="radio"
+          name="question_${index}"
+          value="D"
+        >
+        D. ${escapeHTML(q.options.D)}
+      </label>
     `;
 
+    form.appendChild(box);
+  });
 
-    container.appendChild(box);
+  form.dataset.quizId = quizId;
+
+  document.getElementById("dynamicQuizResult")
+    .textContent = "";
+
+  go("quizPlayer");
+}
+
+/* Submit quiz */
+function submitDynamicQuiz() {
+  if (!currentUser) {
+    alert("Please sign in first.");
+    return;
   }
 
+  const form =
+    document.getElementById("dynamicQuizForm");
 
-  window.addQuestionBox =
-    addQuestionBox;
+  const quizId = form.dataset.quizId;
 
-
-  /* Add first question automatically */
-
-  addQuestionBox();
-
-
-  window.publishQuiz = async () => {
-
-    const user = auth.currentUser;
-
-    if (!user) {
-
-      say(
-        "quizCreateMessage",
-        "Please sign in first."
-      );
-
-      return;
-    }
-
-
-    const title =
-      el("quizTitle").value.trim();
-
-    const subject =
-      el("quizSubject").value.trim();
-
-    const topic =
-      el("quizTopic").value.trim();
-
-    const className =
-      el("quizClass").value.trim();
-
-
-    if (!title || !subject || !topic) {
-
-      say(
-        "quizCreateMessage",
-        "Enter the quiz title, subject and topic."
-      );
-
-      return;
-    }
-
-
-    const boxes =
-      document.querySelectorAll(
-        ".question-box"
-      );
-
-
-    if (boxes.length === 0) {
-
-      say(
-        "quizCreateMessage",
-        "Add at least one question."
-      );
-
-      return;
-    }
-
-
-    const questions = [];
-
-
-    for (const box of boxes) {
-
-      const question =
-        box.querySelector(".question-text")
-          .value.trim();
-
-      const a =
-        box.querySelector(".option-a")
-          .value.trim();
-
-      const b =
-        box.querySelector(".option-b")
-          .value.trim();
-
-      const c =
-        box.querySelector(".option-c")
-          .value.trim();
-
-      const d =
-        box.querySelector(".option-d")
-          .value.trim();
-
-      const answer =
-        box.querySelector(".correct-answer")
-          .value;
-
-
-      if (!question || !a || !b || !c || !d) {
-
-        say(
-          "quizCreateMessage",
-          "Please complete every question."
-        );
-
-        return;
-      }
-
-
-      questions.push({
-        question,
-        options: {
-          a,
-          b,
-          c,
-          d
-        },
-        answer
-      });
-    }
-
-
-    try {
-
-      say(
-        "quizCreateMessage",
-        "Publishing quiz..."
-      );
-
-
-      await addDoc(
-        collection(db, "quizzes"),
-        {
-          title,
-          subject,
-          topic,
-          className,
-          questions,
-          teacherId: user.uid,
-          teacherName:
-            user.displayName || "",
-          published: true,
-          createdAt:
-            serverTimestamp()
-        }
-      );
-
-
-      el("quizTitle").value = "";
-
-      el("quizSubject").value = "";
-
-      el("quizTopic").value = "";
-
-      el("quizClass").value = "";
-
-      el("questionBuilder")
-        .replaceChildren();
-
-      addQuestionBox();
-
-
-      say(
-        "quizCreateMessage",
-        "🎉 Quiz published successfully!"
-      );
-
-
-      loadTeacherQuizzes(user);
-
-    } catch (error) {
-
-      say(
-        "quizCreateMessage",
-        "Could not publish quiz: " +
-        error.message
-      );
-    }
-  };
-
-
-  /* =========================
-     TEACHER QUIZZES
-     ========================= */
-
-
-  function loadTeacherQuizzes(user) {
-
-    const list =
-      el("teacherQuizList");
-
-
-    const quizQuery =
-      query(
-        collection(db, "quizzes"),
-        where(
-          "teacherId",
-          "==",
-          user.uid
-        )
-      );
-
-
-    onSnapshot(
-      quizQuery,
-      snapshot => {
-
-        list.replaceChildren();
-
-
-        if (snapshot.empty) {
-
-          list.textContent =
-            "You have not created any quizzes yet.";
-
-          return;
-        }
-
-
-        snapshot.forEach(record => {
-
-          const data =
-            record.data();
-
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "item";
-
-
-          item.innerHTML = `
-            <h3>${escapeHtml(data.title)}</h3>
-
-            <span class="badge">
-              ${escapeHtml(data.subject || "")}
-            </span>
-
-            <span class="badge">
-              ${escapeHtml(data.topic || "")}
-            </span>
-
-            <p>
-              Questions:
-              ${(data.questions || []).length}
-            </p>
-
-            <p class="success">
-              Published
-            </p>
-          `;
-
-
-          list.appendChild(item);
-        });
-
-      },
-      error => {
-
-        list.textContent =
-          "Could not load quizzes: " +
-          error.message;
-      }
-    );
-  }
-
-
-  /* =========================
-     STUDENT QUIZZES
-     ========================= */
-
-
-  function loadAvailableQuizzes() {
-
-    const list =
-      el("availableQuizzes");
-
-
-    const quizQuery =
-      query(
-        collection(db, "quizzes"),
-        where(
-          "published",
-          "==",
-          true
-        )
-      );
-
-
-    onSnapshot(
-      quizQuery,
-      snapshot => {
-
-        list.replaceChildren();
-
-
-        if (snapshot.empty) {
-
-          list.textContent =
-            "No quizzes are available yet.";
-
-          return;
-        }
-
-
-        snapshot.forEach(record => {
-
-          const data =
-            record.data();
-
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "item";
-
-
-          const title =
-            document.createElement("h3");
-
-          title.textContent =
-            data.title || "Quiz";
-
-
-          const info =
-            document.createElement("p");
-
-          info.textContent =
-            [
-              data.subject,
-              data.topic,
-              data.className
-            ]
-            .filter(Boolean)
-            .join(" • ");
-
-
-          const questions =
-            document.createElement("p");
-
-          questions.className =
-            "muted";
-
-          questions.textContent =
-            (data.questions || []).length +
-            " question(s)";
-
-
-          const button =
-            document.createElement("button");
-
-          button.textContent =
-            "Start Quiz";
-
-
-          button.onclick = () =>
-            startQuiz(
-              record.id,
-              data
-            );
-
-
-          item.append(
-            title,
-            info,
-            questions,
-            button
-          );
-
-
-          list.appendChild(item);
-        });
-
-      },
-      error => {
-
-        list.textContent =
-          "Could not load quizzes: " +
-          error.message;
-      }
-    );
-  }
-
-
-  function startQuiz(id, data) {
-
-    currentQuiz = {
-      id,
-      ...data
-    };
-
-
-    el("quizPlayer")
-      .classList.remove("hidden");
-
-
-    el("playingQuizTitle")
-      .textContent =
-      data.title || "Quiz";
-
-
-    el("playingQuizInfo")
-      .textContent =
-      [
-        data.subject,
-        data.topic,
-        data.className
-      ]
-      .filter(Boolean)
-      .join(" • ");
-
-
-    const form =
-      el("dynamicQuizForm");
-
-
-    form.replaceChildren();
-
-
-    (data.questions || [])
-      .forEach(
-        (question, index) => {
-
-          const box =
-            document.createElement("div");
-
-          box.className =
-            "question-box";
-
-
-          const heading =
-            document.createElement("h3");
-
-          heading.textContent =
-            (index + 1) +
-            ". " +
-            question.question;
-
-
-          box.appendChild(heading);
-
-
-          ["a", "b", "c", "d"]
-            .forEach(letter => {
-
-              const label =
-                document.createElement("label");
-
-              label.className =
-                "option";
-
-
-              const radio =
-                document.createElement("input");
-
-              radio.type =
-                "radio";
-
-              radio.name =
-                "question_" + index;
-
-              radio.value =
-                letter;
-
-              radio.style.width =
-                "auto";
-
-
-              label.append(
-                radio,
-                " " +
-                (question.options?.[letter] || "")
-              );
-
-
-              box.appendChild(label);
-            });
-
-
-          form.appendChild(box);
-        }
-      );
-
-
-    say(
-      "dynamicQuizResult",
-      ""
-    );
-
-
-    el("quizPlayer")
-      .scrollIntoView({
-        behavior: "smooth"
-      });
-  }
-
-
-  window.submitDynamicQuiz =
-    async () => {
-
-      const user =
-        auth.currentUser;
-
-
-      if (!user) {
-
-        say(
-          "dynamicQuizResult",
-          "Please sign in first."
-        );
-
-        return;
-      }
-
-
-      if (!currentQuiz) {
-
-        say(
-          "dynamicQuizResult",
-          "Please select a quiz first."
-        );
-
-        return;
-      }
-
-
-      let score = 0;
-
-      const questions =
-        currentQuiz.questions || [];
-
-
-      questions.forEach(
-        (question, index) => {
-
-          const selected =
-            document.querySelector(
-              `input[name="question_${index}"]:checked`
-            );
-
-
-          if (
-            selected &&
-            selected.value ===
-            question.answer
-          ) {
-
-            score++;
-          }
-        }
-      );
-
-
-      const total =
-        questions.length;
-
-
-      try {
-
-        await addDoc(
-          collection(db, "quizResults"),
-          {
-            userId: user.uid,
-
-            studentName:
-              user.displayName ||
-              user.email ||
-              "Student",
-
-            studentEmail:
-              user.email || "",
-
-            quizId:
-              currentQuiz.id,
-
-            quizName:
-              currentQuiz.title || "Quiz",
-
-            teacherId:
-              currentQuiz.teacherId || "",
-
-            teacherName:
-              currentQuiz.teacherName || "",
-
-            subject:
-              currentQuiz.subject || "",
-
-            score,
-
-            total,
-
-            submittedAt:
-              serverTimestamp()
-          }
-        );
-
-
-        say(
-          "dynamicQuizResult",
-          "🎉 You scored " +
-          score +
-          " out of " +
-          total +
-          ". Your result has been saved!"
-        );
-
-
-        loadResults(user);
-
-      } catch (error) {
-
-        say(
-          "dynamicQuizResult",
-          "You scored " +
-          score +
-          " out of " +
-          total +
-          ", but your result could not be saved: " +
-          error.message
-        );
-      }
-    };
-
-
-  /* =========================
-     STUDENT RESULTS
-     ========================= */
-
-
-  function loadResults(user) {
-
-    const resultsBox =
-      el("myResults");
-
-
-    const resultsQuery =
-      query(
-        collection(db, "quizResults"),
-        where(
-          "userId",
-          "==",
-          user.uid
-        )
-      );
-
-
-    onSnapshot(
-      resultsQuery,
-      snapshot => {
-
-        resultsBox.replaceChildren();
-
-
-        if (snapshot.empty) {
-
-          resultsBox.textContent =
-            "No quiz results saved yet.";
-
-          return;
-        }
-
-
-        snapshot.forEach(record => {
-
-          const data =
-            record.data();
-
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "item";
-
-
-          const heading =
-            document.createElement("h3");
-
-          heading.textContent =
-            data.quizName ||
-            "Quiz";
-
-
-          const score =
-            document.createElement("p");
-
-          score.textContent =
-            "Score: " +
-            data.score +
-            " / " +
-            data.total;
-
-
-          const subject =
-            document.createElement("p");
-
-          subject.className =
-            "muted";
-
-          subject.textContent =
-            data.subject || "";
-
-
-          item.append(
-            heading,
-            score,
-            subject
-          );
-
-
-          resultsBox.appendChild(item);
-        });
-
-      },
-      error => {
-
-        resultsBox.textContent =
-          "Could not load results: " +
-          error.message;
-      }
-    );
-  }
-
-
-  /* =========================
-     TEACHER RESULTS
-     ========================= */
-
-
-  function loadTeacherResults() {
-
-    const box =
-      el("teacherResults");
-
-
-    onSnapshot(
-      collection(db, "quizResults"),
-      snapshot => {
-
-        box.replaceChildren();
-
-
-        if (snapshot.empty) {
-
-          box.textContent =
-            "No student results yet.";
-
-          return;
-        }
-
-
-        let count = 0;
-
-
-        snapshot.forEach(record => {
-
-          const data =
-            record.data();
-
-
-          if (
-            currentUserProfile &&
-            data.teacherId !==
-            auth.currentUser?.uid
-          ) {
-
-            return;
-          }
-
-
-          count++;
-
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "item";
-
-
-          const heading =
-            document.createElement("h3");
-
-          heading.textContent =
-            data.studentName ||
-            data.studentEmail ||
-            "Student";
-
-
-          const quiz =
-            document.createElement("p");
-
-          quiz.textContent =
-            "Quiz: " +
-            (data.quizName || "Quiz");
-
-
-          const score =
-            document.createElement("p");
-
-          score.className =
-            "success";
-
-          score.textContent =
-            "Score: " +
-            data.score +
-            " / " +
-            data.total;
-
-
-          const subject =
-            document.createElement("p");
-
-          subject.className =
-            "muted";
-
-          subject.textContent =
-            "Subject: " +
-            (data.subject || "");
-
-
-          item.append(
-            heading,
-            quiz,
-            score,
-            subject
-          );
-
-
-          box.appendChild(item);
-        });
-
-
-        if (count === 0) {
-
-          box.textContent =
-            "No results from your students yet.";
-        }
-
-      },
-      error => {
-
-        box.textContent =
-          "Could not load results: " +
-          error.message;
-      }
-    );
-  }
-
-
-  /* =========================
-     LIBRARY
-     ========================= */
-
-
-  function loadLibrary() {
-
-    onSnapshot(
-      collection(db, "materials"),
-      snapshot => {
-
-        const list =
-          el("libraryList");
-
-
-        list.replaceChildren();
-
-
-        if (snapshot.empty) {
-
-          list.textContent =
-            "No materials have been added yet.";
-
-          return;
-        }
-
-
-        snapshot.forEach(record => {
-
-          const data =
-            record.data();
-
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "item";
-
-
-          const heading =
-            document.createElement("h3");
-
-          heading.textContent =
-            data.title ||
-            "Untitled";
-
-
-          const paragraph =
-            document.createElement("p");
-
-          paragraph.textContent =
-            (
-              data.subject
-              ? data.subject + " — "
-              : ""
-            ) +
-            (
-              data.content || ""
-            );
-
-
-          item.append(
-            heading,
-            paragraph
-          );
-
-
-          if (data.url) {
-
-            const link =
-              document.createElement("a");
-
-            link.href =
-              data.url;
-
-            link.target =
-              "_blank";
-
-            link.rel =
-              "noopener noreferrer";
-
-            link.textContent =
-              "Open learning material";
-
-
-            item.appendChild(link);
-          }
-
-
-          list.appendChild(item);
-        });
-
-      },
-      error =>
-        say(
-          "libraryList",
-          "Could not load materials: " +
-          error.message
-        )
-    );
-  }
-
-
-  /* =========================
-     LIVE CLASSES
-     ========================= */
-
-
-  function loadClasses() {
-
-    onSnapshot(
-      collection(db, "classes"),
-      snapshot => {
-
-        const list =
-          el("classList");
-
-
-        list.replaceChildren();
-
-
-        if (snapshot.empty) {
-
-          list.textContent =
-            "No classes have been added yet.";
-
-          return;
-        }
-
-
-        snapshot.forEach(record => {
-
-          const data =
-            record.data();
-
-
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "item";
-
-
-          const heading =
-            document.createElement("h3");
-
-          heading.textContent =
-            data.title ||
-            "Live Class";
-
-
-          const details =
-            document.createElement("p");
-
-          details.textContent =
-            [
-              data.teacher,
-              data.time
-            ]
-            .filter(Boolean)
-            .join(" — ");
-
-
-          item.append(
-            heading,
-            details
-          );
-
-
-          if (data.meetUrl) {
-
-            const link =
-              document.createElement("a");
-
-            link.href =
-              data.meetUrl;
-
-            link.target =
-              "_blank";
-
-            link.rel =
-              "noopener noreferrer";
-
-            link.textContent =
-              "Join Google Meet";
-
-
-            item.appendChild(link);
-          }
-
-
-          list.appendChild(item);
-        });
-
-      },
-      error =>
-        say(
-          "classList",
-          "Could not load classes: " +
-          error.message
-        )
-    );
-  }
-
-
-  /* =========================
-     SECURITY HELPER
-     ========================= */
-
-
-  function escapeHtml(value) {
-
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-
-  /* =========================
-     AUTH STATE
-     ========================= */
-
-
-  onAuthStateChanged(
-    auth,
-    async user => {
-
-      if (!user) {
-
-        el("authForms")
-          .classList.remove("hidden");
-
-        el("signedInArea")
-          .classList.add("hidden");
-
-        el("studentDashboard")
-          .classList.add("hidden");
-
-        el("teacherDashboard")
-          .classList.add("hidden");
-
-        say(
-          "libraryList",
-          "Sign in to load learning materials."
-        );
-
-        say(
-          "availableQuizzes",
-          "Sign in to view quizzes."
-        );
-
-        say(
-          "myResults",
-          "Sign in to view your saved results."
-        );
-
-        say(
-          "classList",
-          "Sign in to load live classes."
-        );
-
-        return;
-      }
-
-
-      el("authForms")
-        .classList.add("hidden");
-
-      el("signedInArea")
-        .classList.remove("hidden");
-
-
-      say(
-        "signedInText",
-        "Signed in as " +
-        (
-          user.displayName ||
-          user.email
-        )
-      );
-
-
-      try {
-
-        await saveUserProfile(user);
-
-        await loadUserProfile(user);
-
-        loadLibrary();
-
-        loadClasses();
-
-      } catch (error) {
-
-        say(
-          "accountMessage",
-          "Signed in, but database setup needs attention: " +
-          error.message
-        );
-      }
-
-    }
+  const quiz = quizzes.find(
+    q => q.id === quizId
   );
 
-</script></body>
+  if (!quiz) {
+    alert("Quiz not found.");
+    return;
+  }
+
+  let score = 0;
+  let answered = 0;
+
+  quiz.questions.forEach((q, index) => {
+
+    const selected =
+      document.querySelector(
+        `input[name="question_${index}"]:checked`
+      );
+
+    if (selected) {
+      answered++;
+
+      if (selected.value === q.correct) {
+        score++;
+      }
+    }
+  });
+
+  if (answered < quiz.questions.length) {
+    document.getElementById(
+      "dynamicQuizResult"
+    ).innerHTML =
+      "Please answer all questions before submitting.";
+
+    return;
+  }
+
+  const percentage =
+    Math.round(
+      (score / quiz.questions.length) * 100
+    );
+
+  results.push({
+    id: Date.now().toString(),
+    quizId: quiz.id,
+    quizTitle: quiz.title,
+    studentId: currentUser.id,
+    studentName: currentUser.name,
+    teacherId: quiz.teacherId,
+    score: score,
+    total: quiz.questions.length,
+    percentage: percentage,
+    submittedAt: new Date().toISOString()
+  });
+
+  saveData();
+
+  document.getElementById(
+    "dynamicQuizResult"
+  ).innerHTML =
+    "🎉 You scored <strong>" +
+    score +
+    "/" +
+    quiz.questions.length +
+    "</strong> (" +
+    percentage +
+    "%).";
+
+  loadMyResults();
+}/* ==============================
+   LEARNHUB GHANA - PART 4
+   Library, Results, Classes
+   and Teacher Approval
+   ============================== */
+
+/* Load learning library */
+function loadLibrary() {
+  const box = document.getElementById("libraryList");
+
+  if (!currentUser) {
+    box.textContent = "Sign in to load materials.";
+    return;
+  }
+
+  if (subjects.length === 0) {
+    box.innerHTML =
+      '<p class="muted">No learning materials have been added yet.</p>';
+    return;
+  }
+
+  box.innerHTML = subjects.map(subject => `
+    <div class="item">
+      <h3>📚 ${escapeHTML(subject.name)}</h3>
+
+      <p>
+        <strong>Topic:</strong>
+        ${escapeHTML(subject.topic)}
+      </p>
+
+      <p class="muted">
+        Added by ${escapeHTML(subject.teacherName)}
+      </p>
+
+      <span class="badge">Learning Material</span>
+    </div>
+  `).join("");
+}
+
+
+/* Load student's results */
+function loadMyResults() {
+  const box = document.getElementById("myResults");
+
+  if (!currentUser || currentUser.role === "owner") {
+    box.textContent = "Sign in to view results.";
+    return;
+  }
+
+  const mine = results.filter(
+    result => result.studentId === currentUser.id
+  );
+
+  if (mine.length === 0) {
+    box.innerHTML =
+      '<p class="muted">You have not completed any quizzes yet.</p>';
+    return;
+  }
+
+  box.innerHTML = mine
+    .slice()
+    .reverse()
+    .map(result => `
+      <div class="item">
+        <h3>📝 ${escapeHTML(result.quizTitle)}</h3>
+
+        <p>
+          Score:
+          <strong>
+            ${result.score}/${result.total}
+          </strong>
+        </p>
+
+        <p>
+          Percentage:
+          <strong>
+            ${result.percentage}%
+          </strong>
+        </p>
+
+        <p class="muted">
+          Submitted:
+          ${new Date(result.submittedAt).toLocaleString()}
+        </p>
+      </div>
+    `)
+    .join("");
+}
+
+
+/* Load teacher results */
+function loadTeacherResults() {
+  const box = document.getElementById("teacherResults");
+
+  if (!currentUser || currentUser.role !== "teacher") {
+    box.textContent = "Sign in to load.";
+    return;
+  }
+
+  const mine = results.filter(
+    result => result.teacherId === currentUser.id
+  );
+
+  if (mine.length === 0) {
+    box.innerHTML =
+      '<p class="muted">No students have completed your quizzes yet.</p>';
+    return;
+  }
+
+  box.innerHTML = mine
+    .slice()
+    .reverse()
+    .map(result => `
+      <div class="item">
+        <h3>
+          👨‍🎓 ${escapeHTML(result.studentName)}
+        </h3>
+
+        <p>
+          Quiz:
+          <strong>
+            ${escapeHTML(result.quizTitle)}
+          </strong>
+        </p>
+
+        <p>
+          Score:
+          <strong>
+            ${result.score}/${result.total}
+          </strong>
+        </p>
+
+        <p>
+          Percentage:
+          <strong>
+            ${result.percentage}%
+          </strong>
+        </p>
+
+        <p class="muted">
+          ${new Date(result.submittedAt).toLocaleString()}
+        </p>
+      </div>
+    `)
+    .join("");
+}
+
+
+/* ==============================
+   LIVE CLASSES
+   ============================== */
+
+function loadClasses() {
+  const box = document.getElementById("classList");
+
+  if (!currentUser) {
+    box.textContent = "Sign in to load classes.";
+    return;
+  }
+
+  const classes = JSON.parse(
+    localStorage.getItem("learnhub_classes") || "[]"
+  );
+
+  if (classes.length === 0) {
+    box.innerHTML = `
+      <p class="muted">
+        No live classes have been scheduled yet.
+      </p>
+    `;
+    return;
+  }
+
+  box.innerHTML = classes.map(liveClass => `
+    <div class="item">
+      <h3>🎥 ${escapeHTML(liveClass.title)}</h3>
+
+      <p>
+        <strong>Teacher:</strong>
+        ${escapeHTML(liveClass.teacherName)}
+      </p>
+
+      <p>
+        <strong>Date:</strong>
+        ${escapeHTML(liveClass.date)}
+      </p>
+
+      <p>
+        <strong>Time:</strong>
+        ${escapeHTML(liveClass.time)}
+      </p>
+
+      <button
+        onclick="joinLiveClass('${liveClass.link}')"
+      >
+        🎥 Join Class
+      </button>
+    </div>
+  `).join("");
+}
+
+
+/* Join live class */
+function joinLiveClass(link) {
+  if (!link) {
+    alert("The teacher has not added a class link yet.");
+    return;
+  }
+
+  window.open(link, "_blank");
+}
+
+
+/* ==============================
+   OWNER - TEACHER REQUESTS
+   ============================== */
+
+function loadTeacherRequests() {
+  const box =
+    document.getElementById("teacherRequests");
+
+  if (!currentUser || currentUser.role !== "owner") {
+    box.textContent = "Owner access required.";
+    return;
+  }
+
+  if (teacherRequests.length === 0) {
+    box.innerHTML =
+      '<p class="muted">There are no teacher requests.</p>';
+    return;
+  }
+
+  box.innerHTML = teacherRequests
+    .slice()
+    .reverse()
+    .map(request => `
+      <div class="item">
+
+        <h3>
+          👤 ${escapeHTML(request.name)}
+        </h3>
+
+        <p>
+          Email:
+          ${escapeHTML(request.email)}
+        </p>
+
+        <p>
+          Status:
+          <strong>
+            ${escapeHTML(request.status)}
+          </strong>
+        </p>
+
+        ${
+          request.status === "pending"
+          ? `
+            <button
+              class="green"
+              onclick="approveTeacher('${request.id}')"
+            >
+              ✅ Approve
+            </button>
+
+            <button
+              class="danger"
+              onclick="rejectTeacher('${request.id}')"
+            >
+              ❌ Reject
+            </button>
+          `
+          : ""
+        }
+
+      </div>
+    `)
+    .join("");
+}
+
+
+/* Approve teacher */
+function approveTeacher(requestId) {
+  if (!currentUser || currentUser.role !== "owner") {
+    alert("Owner access required.");
+    return;
+  }
+
+  const request = teacherRequests.find(
+    r => r.id === requestId
+  );
+
+  if (!request) {
+    alert("Teacher request not found.");
+    return;
+  }
+
+  const user = users.find(
+    u => u.id === request.userId
+  );
+
+  if (!user) {
+    alert("User account not found.");
+    return;
+  }
+
+  user.role = "teacher";
+  user.teacherApproved = true;
+
+  request.status = "approved";
+
+  saveData();
+
+  loadTeacherRequests();
+
+  alert(
+    request.name +
+    " has been approved as a teacher."
+  );
+}
+
+
+/* Reject teacher */
+function rejectTeacher(requestId) {
+  if (!currentUser || currentUser.role !== "owner") {
+    alert("Owner access required.");
+    return;
+  }
+
+  const request = teacherRequests.find(
+    r => r.id === requestId
+  );
+
+  if (!request) {
+    alert("Teacher request not found.");
+    return;
+  }
+
+  request.status = "rejected";
+
+  const user = users.find(
+    u => u.id === request.userId
+  );
+
+  if (user) {
+    user.teacherApproved = false;
+  }
+
+  saveData();
+
+  loadTeacherRequests();
+
+  alert(
+    request.name +
+    " has been rejected."
+  );
+}
+
+
+/* ==============================
+   STARTER DATA
+   ============================== */
+
+function createStarterData() {
+
+  const classes =
+    JSON.parse(
+      localStorage.getItem("learnhub_classes") || "[]"
+    );
+
+  if (!localStorage.getItem("learnhub_classes")) {
+
+    localStorage.setItem(
+      "learnhub_classes",
+      JSON.stringify([
+        {
+          id: "class1",
+          title: "Introduction to Mathematics",
+          teacherName: "LearnHub Teacher",
+          date: "Saturday",
+          time: "10:00 AM",
+          link: ""
+        }
+      ])
+    );
+  }
+}
+
+
+/* ==============================
+   PAGE STARTUP
+   ============================== */
+
+createStarterData();
+
+window.addEventListener("load", function() {
+
+  /*
+   * Add the first question box
+   * automatically for teachers.
+   */
+  if (
+    document.getElementById("questionBuilder") &&
+    document.getElementById("questionBuilder").children.length === 0
+  ) {
+    addQuestionBox();
+  }
+
+  /*
+   * Load any previously saved login.
+   * This version keeps the user signed in
+   * only during the current page session.
+   */
+  loadLibrary();
+  loadAvailableQuizzes();
+  loadMyResults();
+  loadClasses();
+
+});
+
+
+/* ==============================
+   MOBILE-FRIENDLY NAVIGATION
+   ============================== */
+
+document.querySelectorAll("nav a").forEach(link => {
+
+  link.addEventListener("click", function(event) {
+
+    const target =
+      document.querySelector(
+        this.getAttribute("href")
+      );
+
+    if (target) {
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+  });
+
+});
+
+
+/* ==============================
+   END OF PART 4
+   ============================== */<script>
+
+/* =========================================
+   LEARNHUB GHANA - PART 6
+   PROPER SIGN-IN GATE
+   ========================================= */
+
+
+/* -----------------------------------------
+   1. Learning area sections
+   ----------------------------------------- */
+
+const protectedSections = [
+  "studentDashboard",
+  "teacherDashboard",
+  "ownerDashboard",
+  "library",
+  "quizzes",
+  "quizPlayer",
+  "studentResults",
+  "classes"
+];
+
+
+/* -----------------------------------------
+   2. Hide learning area
+   ----------------------------------------- */
+
+function lockLearningArea() {
+
+  protectedSections.forEach(function(id) {
+
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.classList.add("hidden");
+    }
+
+  });
+
+}
+
+
+/* -----------------------------------------
+   3. Show learning area
+   ----------------------------------------- */
+
+function unlockLearningArea() {
+
+  if (!currentUser) {
+    lockLearningArea();
+    return;
+  }
+
+  /*
+   * Student dashboard
+   */
+  if (currentUser.role === "student") {
+
+    document
+      .getElementById("studentDashboard")
+      .classList.remove("hidden");
+
+  }
+
+
+  /*
+   * Approved teacher
+   */
+  if (
+    currentUser.role === "teacher" &&
+    currentUser.teacherApproved === true
+  ) {
+
+    document
+      .getElementById("teacherDashboard")
+      .classList.remove("hidden");
+
+  }
+
+
+  /*
+   * Owner
+   */
+  if (currentUser.role === "owner") {
+
+    document
+      .getElementById("ownerDashboard")
+      .classList.remove("hidden");
+
+  }
+
+
+  /*
+   * Learning sections
+   */
+  document
+    .getElementById("library")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("quizzes")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("studentResults")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("classes")
+    .classList.remove("hidden");
+
+}
+
+
+/* -----------------------------------------
+   4. Protected navigation
+   ----------------------------------------- */
+
+function openProtectedSection(sectionId) {
+
+  if (!currentUser) {
+
+    alert(
+      "🔒 Please sign in or create an account first."
+    );
+
+    go("join");
+
+    return;
+  }
+
+  const section =
+    document.getElementById(sectionId);
+
+  if (section) {
+
+    section.classList.remove("hidden");
+
+    section.scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
+}
+
+
+/* -----------------------------------------
+   5. Protect navigation links
+   ----------------------------------------- */
+
+document.querySelectorAll("nav a").forEach(function(link) {
+
+  const href =
+    link.getAttribute("href");
+
+  if (
+    href === "#dashboard" ||
+    href === "#library" ||
+    href === "#quizzes" ||
+    href === "#classes"
+  ) {
+
+    link.addEventListener("click", function(event) {
+
+      event.preventDefault();
+
+      if (!currentUser) {
+
+        alert(
+          "🔒 Please sign in or create an account first."
+        );
+
+        go("join");
+
+        return;
+      }
+
+      const targetId =
+        href.substring(1);
+
+      openProtectedSection(targetId);
+
+    });
+
+  }
+
+});
+
+
+/* -----------------------------------------
+   6. Protect Get Started
+   ----------------------------------------- */
+
+function startLearning() {
+
+  if (!currentUser) {
+
+    go("join");
+
+    setTimeout(function() {
+
+      document
+        .getElementById("email")
+        .focus();
+
+    }, 500);
+
+    return;
+  }
+
+  unlockLearningArea();
+
+  go("studentDashboard");
+
+}
+
+
+/* -----------------------------------------
+   7. Update Get Started button
+   ----------------------------------------- */
+
+const getStartedButton =
+  document.querySelector(
+    ".hero button"
+  );
+
+if (getStartedButton) {
+
+  getStartedButton.onclick =
+    startLearning;
+
+}
+
+
+/* -----------------------------------------
+   8. Protect quiz buttons
+   ----------------------------------------- */
+
+function protectedStartQuiz(quizId) {
+
+  if (!currentUser) {
+
+    alert(
+      "🔒 Please sign in before taking a quiz."
+    );
+
+    go("join");
+
+    return;
+  }
+
+  startQuiz(quizId);
+
+}
+
+
+/* -----------------------------------------
+   9. Replace quiz buttons
+   ----------------------------------------- */
+
+function loadAvailableQuizzes() {
+
+  const box =
+    document.getElementById(
+      "availableQuizzes"
+    );
+
+  if (!currentUser) {
+
+    box.innerHTML = `
+      <div class="card">
+        <h3>🔒 Quizzes are locked</h3>
+
+        <p>
+          Please sign in or create an account
+          to view and take quizzes.
+        </p>
+
+        <button onclick="go('join')">
+          Sign In / Create Account
+        </button>
+      </div>
+    `;
+
+    return;
+  }
+
+
+  if (quizzes.length === 0) {
+
+    box.innerHTML =
+      '<p class="muted">No quizzes have been published yet.</p>';
+
+    return;
+  }
+
+
+  box.innerHTML =
+    quizzes.map(function(q) {
+
+      return `
+        <div class="item">
+
+          <h3>
+            ${escapeHTML(q.title)}
+          </h3>
+
+          <span class="badge">
+            ${escapeHTML(q.subject)}
+          </span>
+
+          <span class="badge">
+            ${escapeHTML(q.topic)}
+          </span>
+
+          <span class="badge">
+            ${escapeHTML(q.classLevel)}
+          </span>
+
+          <p>
+            Teacher:
+            ${escapeHTML(q.teacherName)}
+          </p>
+
+          <button
+            onclick="protectedStartQuiz('${q.id}')"
+          >
+            Start Quiz
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+/* -----------------------------------------
+   10. Protect library
+   ----------------------------------------- */
+
+function loadLibrary() {
+
+  const box =
+    document.getElementById(
+      "libraryList"
+    );
+
+
+  if (!currentUser) {
+
+    box.innerHTML = `
+      <div class="card">
+
+        <h3>🔒 Learning Library Locked</h3>
+
+        <p>
+          Sign in or create an account
+          to access learning materials.
+        </p>
+
+        <button onclick="go('join')">
+          Sign In / Create Account
+        </button>
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  if (subjects.length === 0) {
+
+    box.innerHTML =
+      '<p class="muted">No learning materials have been added yet.</p>';
+
+    return;
+  }
+
+
+  box.innerHTML =
+    subjects.map(function(subject) {
+
+      return `
+        <div class="item">
+
+          <h3>
+            📚 ${escapeHTML(subject.name)}
+          </h3>
+
+          <p>
+            <strong>Topic:</strong>
+            ${escapeHTML(subject.topic)}
+          </p>
+
+          <p class="muted">
+            Added by
+            ${escapeHTML(subject.teacherName)}
+          </p>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+/* -----------------------------------------
+   11. Protect results
+   ----------------------------------------- */
+
+function loadMyResults() {
+
+  const box =
+    document.getElementById(
+      "myResults"
+    );
+
+
+  if (!currentUser) {
+
+    box.innerHTML = `
+      <div class="card">
+
+        <h3>🔒 Results Locked</h3>
+
+        <p>
+          Sign in to view your quiz results.
+        </p>
+
+        <button onclick="go('join')">
+          Sign In / Create Account
+        </button>
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const mine =
+    results.filter(function(result) {
+
+      return result.studentId ===
+        currentUser.id;
+
+    });
+
+
+  if (mine.length === 0) {
+
+    box.innerHTML =
+      '<p class="muted">You have not completed any quizzes yet.</p>';
+
+    return;
+  }
+
+
+  box.innerHTML =
+    mine
+      .slice()
+      .reverse()
+      .map(function(result) {
+
+        return `
+          <div class="item">
+
+            <h3>
+              📝 ${escapeHTML(result.quizTitle)}
+            </h3>
+
+            <p>
+              Score:
+              <strong>
+                ${result.score}/${result.total}
+              </strong>
+            </p>
+
+            <p>
+              Percentage:
+              <strong>
+                ${result.percentage}%
+              </strong>
+            </p>
+
+          </div>
+        `;
+
+      })
+      .join("");
+
+}
+
+
+/* -----------------------------------------
+   12. Protect live classes
+   ----------------------------------------- */
+
+function loadClasses() {
+
+  const box =
+    document.getElementById(
+      "classList"
+    );
+
+
+  if (!currentUser) {
+
+    box.innerHTML = `
+      <div class="card">
+
+        <h3>🔒 Live Classes Locked</h3>
+
+        <p>
+          Sign in or create an account
+          to join live classes.
+        </p>
+
+        <button onclick="go('join')">
+          Sign In / Create Account
+        </button>
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const classes =
+    JSON.parse(
+      localStorage.getItem(
+        "learnhub_classes"
+      ) || "[]"
+    );
+
+
+  if (classes.length === 0) {
+
+    box.innerHTML =
+      '<p class="muted">No live classes have been scheduled yet.</p>';
+
+    return;
+  }
+
+
+  box.innerHTML =
+    classes.map(function(liveClass) {
+
+      return `
+        <div class="item">
+
+          <h3>
+            🎥 ${escapeHTML(liveClass.title)}
+          </h3>
+
+          <p>
+            <strong>Teacher:</strong>
+            ${escapeHTML(liveClass.teacherName)}
+          </p>
+
+          <p>
+            <strong>Date:</strong>
+            ${escapeHTML(liveClass.date)}
+          </p>
+
+          <p>
+            <strong>Time:</strong>
+            ${escapeHTML(liveClass.time)}
+          </p>
+
+          <button
+            onclick="joinLiveClass('${liveClass.link}')"
+          >
+            🎥 Join Class
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+/* -----------------------------------------
+   13. Sign-in gate on startup
+   ----------------------------------------- */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    /*
+     * Start with the learning area locked.
+     */
+    lockLearningArea();
+
+    /*
+     * Show the welcome page.
+     */
+    document
+      .getElementById("home")
+      .classList.remove("hidden");
+
+    /*
+     * Keep Join section visible.
+     */
+    document
+      .getElementById("join")
+      .classList.remove("hidden");
+
+  }
+);
+
+
+/* -----------------------------------------
+   14. Unlock after successful sign-in
+   ----------------------------------------- */
+
+const originalUpdateUI =
+  updateUI;
+
+updateUI = function() {
+
+  originalUpdateUI();
+
+  if (currentUser) {
+
+    unlockLearningArea();
+
+  } else {
+
+    lockLearningArea();
+
+  }
+
+};
+
+
+/* -----------------------------------------
+   15. Lock everything after sign out
+   ----------------------------------------- */
+
+const originalSignOutUser =
+  signOutUser;
+
+signOutUser = function() {
+
+  originalSignOutUser();
+
+  lockLearningArea();
+
+  go("home");
+
+};
+
+
+/* -----------------------------------------
+   16. Final page setup
+   ----------------------------------------- */
+
+if (currentUser) {
+
+  unlockLearningArea();
+
+} else {
+
+  lockLearningArea();
+
+}
+
+</script>
+
+</body>
 </html>
