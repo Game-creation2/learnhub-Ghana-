@@ -1,160 +1,424 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearnHub Ghana</title>
-  <style>
+  <title>LearnHub Ghana</title>  <style>
     * { box-sizing: border-box; }
-    body { margin:0; font-family:Arial,sans-serif; background:#f3f6fb; color:#17233c; }
-    header { background:#123c7a; color:white; padding:20px; text-align:center; }
-    nav { background:white; padding:12px; text-align:center; position:sticky; top:0; }
-    nav a { color:#123c7a; margin:0 8px; text-decoration:none; font-weight:bold; }
-    .hero { background:#dceaff; padding:35px 20px; text-align:center; }
-    .container { max-width:950px; margin:25px auto; padding:0 15px; }
-    .card { background:white; padding:20px; margin:15px 0; border-radius:12px; box-shadow:0 3px 12px #00000012; }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; }
-    button { background:#1763c6; color:white; border:0; padding:12px 17px; border-radius:8px; cursor:pointer; margin:4px 2px; font-size:15px; }
-    button:hover { background:#0d478f; }
-    input,select { width:100%; padding:12px; margin:8px 0 15px; border:1px solid #ccd5e2; border-radius:7px; font-size:16px; }
-    label { font-weight:bold; }
-    .hidden { display:none; }
-    .message { color:#1763c6; font-weight:bold; overflow-wrap:anywhere; }
-    .muted { color:#53627a; }
-    .item { border-top:1px solid #e2e8f0; padding:14px 0; }
-    footer { text-align:center; padding:25px; background:#123c7a; color:white; margin-top:35px; }
-  </style>
-</head>
-<body>
 
-<header>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      color: #17233c;
+    }
+
+    header {
+      background: #123c7a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: white;
+      padding: 12px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px #00000010;
+    }
+
+    nav a {
+      color: #123c7a;
+      margin: 0 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: #dceaff;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #00000012;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    button {
+      background: #1763c6;
+      color: white;
+      border: 0;
+      padding: 12px 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 4px 2px;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #0d478f;
+    }
+
+    button.danger {
+      background: #c62828;
+    }
+
+    button.green {
+      background: #16803c;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 15px;
+      border: 1px solid #ccd5e2;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .message {
+      color: #1763c6;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .error {
+      color: #c62828;
+      font-weight: bold;
+    }
+
+    .success {
+      color: #16803c;
+      font-weight: bold;
+    }
+
+    .muted {
+      color: #53627a;
+    }
+
+    .item {
+      border-top: 1px solid #e2e8f0;
+      padding: 14px 0;
+    }
+
+    .question-box {
+      border: 1px solid #d8e0eb;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 10px;
+      background: #f9fbfe;
+    }
+
+    .option {
+      display: block;
+      font-weight: normal;
+      margin: 8px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 15px;
+      background: #e5efff;
+      color: #123c7a;
+      font-size: 13px;
+      margin: 3px;
+    }
+
+    .teacher-box {
+      border-left: 5px solid #1763c6;
+      padding-left: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #123c7a;
+      color: white;
+      margin-top: 35px;
+    }
+  </style></head><body><header>
   <h1>LearnHub Ghana</h1>
   <p>Learn. Connect. Succeed.</p>
-</header>
-
-<nav>
+</header><nav>
   <a href="#home">Home</a>
   <a href="#dashboard">Dashboard</a>
   <a href="#library">Library</a>
-  <a href="#quiz">Quizzes</a>
+  <a href="#quizzes">Quizzes</a>
   <a href="#classes">Live Classes</a>
   <a href="#join">Join</a>
-</nav>
-
-<section class="hero" id="home">
+</nav><section class="hero" id="home">
   <h2>Welcome to LearnHub Ghana</h2>
   <p>A place for students and teachers to learn together.</p>
   <button onclick="document.getElementById('join').scrollIntoView()">Get Started</button>
-</section>
-
-<main class="container">
-
-  <section class="card" id="join">
+</section><main class="container">  <!-- AUTHENTICATION -->  <section class="card" id="join">
     <h2>Join LearnHub Ghana</h2>
-    <p>Create an account or sign in with your Google account.</p>
+    <p>Create an account or sign in.</p><div id="authForms">
 
-    <div id="authForms">
-      <label for="studentName">Your name (for new accounts)</label>
-      <input id="studentName" placeholder="Enter your name">
+  <label for="studentName">Full name</label>
+  <input id="studentName" placeholder="Enter your full name">
 
-      <label for="email">Email address</label>
-      <input id="email" type="email" placeholder="Enter your email">
+  <label for="accountRole">Account type</label>
+  <select id="accountRole">
+    <option value="student">👨‍🎓 Student</option>
+    <option value="teacher">👨‍🏫 Teacher</option>
+  </select>
 
-      <label for="password">Password</label>
-      <input id="password" type="password" placeholder="At least 6 characters">
+  <label for="email">Email address</label>
+  <input id="email" type="email" placeholder="Enter your email">
 
-      <button onclick="signUp()">Create Account</button>
-      <button onclick="signIn()">Sign In</button>
-      <button onclick="googleSignIn()">Continue with Google</button>
-    </div>
+  <label for="password">Password</label>
+  <input id="password" type="password" placeholder="At least 6 characters">
 
-    <p id="accountMessage" class="message" aria-live="polite"></p>
+  <button onclick="signUp()">Create Account</button>
+  <button onclick="signIn()">Sign In</button>
+  <button onclick="googleSignIn()">Continue with Google</button>
+</div>
 
-    <div id="signedInArea" class="hidden">
-      <p id="signedInText"></p>
-      <button onclick="signOutUser()">Sign Out</button>
-    </div>
-  </section>
+<p id="accountMessage" class="message" aria-live="polite"></p>
 
-  <section class="card hidden" id="dashboard">
-    <h2>Student Dashboard</h2>
-    <p id="welcomeText"></p>
-    <p class="muted">Choose a learning area below.</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Learning Library</h3>
-        <p>Read study notes and materials.</p>
-        <button onclick="document.getElementById('library').scrollIntoView()">Open Library</button>
-      </div>
-      <div class="card">
-        <h3>Quizzes</h3>
-        <p>Answer questions and see your score.</p>
-        <button onclick="document.getElementById('quiz').scrollIntoView()">Start Quiz</button>
-      </div>
-      <div class="card">
-        <h3>Live Classes</h3>
-        <p>Find your teacher’s online class link.</p>
-        <button onclick="document.getElementById('classes').scrollIntoView()">View Classes</button>
-      </div>
-    </div>
-  </section>
+<div id="signedInArea" class="hidden">
+  <p id="signedInText"></p>
+  <button onclick="signOutUser()">Sign Out</button>
+</div>
 
-  <section class="card" id="library">
-    <h2>Learning Library</h2>
-    <p class="muted">Study materials added by LearnHub administrators will appear here.</p>
-    <div id="libraryList">Sign in to load learning materials.</div>
-  </section>
+  </section>  <!-- STUDENT DASHBOARD -->  <section class="card hidden" id="studentDashboard">
+    <h2>👨‍🎓 Student Dashboard</h2>
+    <p id="welcomeText"></p><div class="cards">
 
-  <section class="card" id="quiz">
-    <h2>Practice Quiz</h2>
-    <p>Answer these questions and submit to see your score.</p>
-    <form id="quizForm">
-      <p><strong>1. What does HTML stand for?</strong></p>
-      <label><input type="radio" name="q1" value="a" style="width:auto"> Hyper Text Markup Language</label><br>
-      <label><input type="radio" name="q1" value="b" style="width:auto"> High Text Machine Language</label><br>
-      <label><input type="radio" name="q1" value="c" style="width:auto"> Home Tool Markup Language</label>
+  <div class="card">
+    <h3>📚 Learning Library</h3>
+    <p>Read study notes and materials.</p>
+    <button onclick="document.getElementById('library').scrollIntoView()">
+      Open Library
+    </button>
+  </div>
 
-      <p><strong>2. Which tag creates a main heading in HTML?</strong></p>
-      <label><input type="radio" name="q2" value="a" style="width:auto"> &lt;p&gt;</label><br>
-      <label><input type="radio" name="q2" value="b" style="width:auto"> &lt;h1&gt;</label><br>
-      <label><input type="radio" name="q2" value="c" style="width:auto"> &lt;img&gt;</label>
+  <div class="card">
+    <h3>📝 Quizzes</h3>
+    <p>Take quizzes created by teachers.</p>
+    <button onclick="document.getElementById('quizzes').scrollIntoView()">
+      View Quizzes
+    </button>
+  </div>
 
-      <p><strong>3. Which language is used to add interactivity to a website?</strong></p>
-      <label><input type="radio" name="q3" value="a" style="width:auto"> CSS</label><br>
-      <label><input type="radio" name="q3" value="b" style="width:auto"> HTML</label><br>
-      <label><input type="radio" name="q3" value="c" style="width:auto"> JavaScript</label><br><br>
+  <div class="card">
+    <h3>📊 My Results</h3>
+    <p>View your recent quiz scores.</p>
+    <button onclick="document.getElementById('studentResults').scrollIntoView()">
+      View Results
+    </button>
+  </div>
 
-      <button type="submit">Submit Quiz</button>
-    </form>
-    <p id="quizResult" class="message" aria-live="polite"></p>
-    <h3>My Recent Quiz Results</h3>
-    <div id="myResults">Sign in to view your saved results.</div>
-  </section>
+  <div class="card">
+    <h3>🎥 Live Classes</h3>
+    <p>Find your teacher's online class.</p>
+    <button onclick="document.getElementById('classes').scrollIntoView()">
+      View Classes
+    </button>
+  </div>
 
-  <section class="card" id="classes">
-    <h2>Live Classes</h2>
-    <p class="muted">Your teacher’s class information and meeting link will appear here.</p>
-    <div id="classList">Sign in to load live classes.</div>
-  </section>
+</div>
 
-</main>
+  </section>  <!-- TEACHER DASHBOARD -->  <section class="card hidden" id="teacherDashboard"><h2>👨‍🏫 Teacher Dashboard</h2>
 
-<footer>
+<p id="teacherWelcome"></p>
+
+<!-- SUBJECT CREATOR -->
+<div class="card teacher-box">
+
+  <h3>📚 Add Subject / Topic</h3>
+
+  <label>Subject name</label>
+  <input id="subjectName" placeholder="Example: Mathematics">
+
+  <label>Topic</label>
+  <input id="subjectTopic" placeholder="Example: Fractions">
+
+  <button class="green" onclick="addSubject()">
+    Add Subject
+  </button>
+
+  <p id="subjectMessage" class="message"></p>
+
+</div>
+
+
+<!-- QUIZ CREATOR -->
+<div class="card teacher-box">
+
+  <h3>📝 Create Quiz</h3>
+
+  <label>Quiz title</label>
+  <input id="quizTitle" placeholder="Example: Basic Mathematics Quiz">
+
+  <label>Subject</label>
+  <input id="quizSubject" placeholder="Example: Mathematics">
+
+  <label>Topic</label>
+  <input id="quizTopic" placeholder="Example: Fractions">
+
+  <label>Class / Level</label>
+  <input id="quizClass" placeholder="Example: JHS 1">
+
+  <h3>Questions</h3>
+
+  <div id="questionBuilder"></div>
+
+  <button onclick="addQuestionBox()">
+    ➕ Add Question
+  </button>
+
+  <br>
+
+  <button class="green" onclick="publishQuiz()">
+    📢 Publish Quiz
+  </button>
+
+  <p id="quizCreateMessage" class="message"></p>
+
+</div>
+
+
+<!-- TEACHER'S QUIZZES -->
+<div class="card teacher-box">
+
+  <h3>📋 My Quizzes</h3>
+
+  <div id="teacherQuizList">
+    Loading quizzes...
+  </div>
+
+</div>
+
+
+<!-- TEACHER RESULTS -->
+<div class="card teacher-box">
+
+  <h3>📊 Student Results</h3>
+
+  <div id="teacherResults">
+    Loading student results...
+  </div>
+
+</div>
+
+  </section>  <!-- LIBRARY -->  <section class="card" id="library"><h2>Learning Library</h2>
+
+<p class="muted">
+  Study materials added by LearnHub Ghana will appear here.
+</p>
+
+<div id="libraryList">
+  Sign in to load learning materials.
+</div>
+
+  </section>  <!-- AVAILABLE QUIZZES -->  <section class="card" id="quizzes"><h2>📝 Available Quizzes</h2>
+
+<p class="muted">
+  Quizzes published by teachers will appear here.
+</p>
+
+<div id="availableQuizzes">
+  Sign in to view quizzes.
+</div>
+
+  </section>  <!-- QUIZ PLAYER -->  <section class="card hidden" id="quizPlayer"><h2 id="playingQuizTitle"></h2>
+
+<p id="playingQuizInfo" class="muted"></p>
+
+<form id="dynamicQuizForm"></form>
+
+<button onclick="submitDynamicQuiz()">
+  ✅ Submit Quiz
+</button>
+
+<p id="dynamicQuizResult" class="message"></p>
+
+  </section>  <!-- STUDENT RESULTS -->  <section class="card" id="studentResults"><h2>📊 My Recent Results</h2>
+
+<div id="myResults">
+  Sign in to view your saved results.
+</div>
+
+  </section>  <!-- LIVE CLASSES -->  <section class="card" id="classes"><h2>🎥 Live Classes</h2>
+
+<p class="muted">
+  Your teacher's class information and meeting link will appear here.
+</p>
+
+<div id="classList">
+  Sign in to load live classes.
+</div>
+
+  </section></main><footer>
   <p>© 2026 LearnHub Ghana</p>
   <p>Learning together, growing together.</p>
-</footer>
+</footer><script type="module">
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { initializeApp } from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
   import {
-    getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-    GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+    onAuthStateChanged,
     updateProfile
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  } from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
   import {
-    getFirestore, doc, getDoc, setDoc, collection, addDoc,
-    query, where, orderBy, limit, onSnapshot, serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    collection,
+    addDoc,
+    query,
+    where,
+    onSnapshot,
+    serverTimestamp,
+    getDocs
+  } from
+  "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+  /* FIREBASE */
 
   const firebaseConfig = {
     apiKey: "AIzaSyCeujDskpEkThTiNtNzQMtZsVxVXog3iPk",
@@ -165,236 +429,1630 @@
     appId: "1:19839325015:web:83ffc18d729273b5f32412"
   };
 
+
   const app = initializeApp(firebaseConfig);
+
   const auth = getAuth(app);
+
   const db = getFirestore(app);
+
   const googleProvider = new GoogleAuthProvider();
 
+
   const el = id => document.getElementById(id);
+
+
+  let currentUserProfile = null;
+
+  let currentQuiz = null;
+
 
   function say(id, message) {
     el(id).textContent = message;
   }
 
+
+  /* =========================
+     AUTHENTICATION
+     ========================= */
+
+
   function getCredentials() {
+
     const email = el("email").value.trim();
+
     const password = el("password").value;
+
     if (!email || !password) {
-      say("accountMessage", "Enter your email and password.");
+
+      say(
+        "accountMessage",
+        "Enter your email and password."
+      );
+
       return null;
     }
+
     return { email, password };
   }
 
+
   window.signUp = async () => {
+
     const details = getCredentials();
+
     if (!details) return;
+
     const name = el("studentName").value.trim();
+
+    const role = el("accountRole").value;
+
     if (!name) {
-      say("accountMessage", "Please enter your name.");
+
+      say(
+        "accountMessage",
+        "Please enter your full name."
+      );
+
       return;
     }
+
     try {
-      say("accountMessage", "Creating your account...");
-      const result = await createUserWithEmailAndPassword(auth, details.email, details.password);
-      await updateProfile(result.user, { displayName: name });
-      await saveUserProfile(result.user);
-      say("accountMessage", "Account created. Welcome!");
+
+      say(
+        "accountMessage",
+        "Creating your account..."
+      );
+
+      const result =
+        await createUserWithEmailAndPassword(
+          auth,
+          details.email,
+          details.password
+        );
+
+
+      await updateProfile(
+        result.user,
+        {
+          displayName: name
+        }
+      );
+
+
+      await saveUserProfile(
+        result.user,
+        role
+      );
+
+
+      say(
+        "accountMessage",
+        "Account created successfully!"
+      );
+
     } catch (error) {
-      say("accountMessage", error.message);
+
+      say(
+        "accountMessage",
+        error.message
+      );
     }
   };
+
 
   window.signIn = async () => {
+
     const details = getCredentials();
+
     if (!details) return;
+
     try {
-      say("accountMessage", "Signing in...");
-      await signInWithEmailAndPassword(auth, details.email, details.password);
-      say("accountMessage", "You are signed in!");
+
+      say(
+        "accountMessage",
+        "Signing in..."
+      );
+
+      await signInWithEmailAndPassword(
+        auth,
+        details.email,
+        details.password
+      );
+
+      say(
+        "accountMessage",
+        "You are signed in!"
+      );
+
     } catch (error) {
-      say("accountMessage", error.message);
+
+      say(
+        "accountMessage",
+        error.message
+      );
     }
   };
+
 
   window.googleSignIn = async () => {
+
     try {
-      say("accountMessage", "Opening Google sign-in...");
-      await signInWithPopup(auth, googleProvider);
-      say("accountMessage", "Google sign-in successful!");
+
+      say(
+        "accountMessage",
+        "Opening Google sign-in..."
+      );
+
+      const result =
+        await signInWithPopup(
+          auth,
+          googleProvider
+        );
+
+
+      await saveUserProfile(
+        result.user,
+        "student"
+      );
+
+
+      say(
+        "accountMessage",
+        "Google sign-in successful!"
+      );
+
     } catch (error) {
-      say("accountMessage", error.message);
+
+      say(
+        "accountMessage",
+        error.message
+      );
     }
   };
+
 
   window.signOutUser = async () => {
+
     try {
+
       await signOut(auth);
-      say("accountMessage", "You have signed out.");
+
+      say(
+        "accountMessage",
+        "You have signed out."
+      );
+
     } catch (error) {
-      say("accountMessage", error.message);
+
+      say(
+        "accountMessage",
+        error.message
+      );
     }
   };
 
-  async function saveUserProfile(user) {
-    const profileRef = doc(db, "users", user.uid);
-    const existing = await getDoc(profileRef);
+
+  async function saveUserProfile(user, selectedRole = "student") {
+
+    const profileRef =
+      doc(db, "users", user.uid);
+
+    const existing =
+      await getDoc(profileRef);
+
+
     if (!existing.exists()) {
-      await setDoc(profileRef, {
+
+      await setDoc(
+        profileRef,
+        {
+          name: user.displayName || "Student",
+          email: user.email || "",
+          role: selectedRole,
+          createdAt: serverTimestamp()
+        }
+      );
+
+    }
+  }
+
+
+  /* =========================
+     DASHBOARD
+     ========================= */
+
+
+  async function loadUserProfile(user) {
+
+    const profileRef =
+      doc(db, "users", user.uid);
+
+    const profile =
+      await getDoc(profileRef);
+
+
+    if (profile.exists()) {
+
+      currentUserProfile =
+        profile.data();
+
+    } else {
+
+      await saveUserProfile(
+        user,
+        "student"
+      );
+
+      currentUserProfile = {
         name: user.displayName || "Student",
         email: user.email || "",
-        role: "student",
-        createdAt: serverTimestamp()
-      });
+        role: "student"
+      };
+    }
+
+
+    if (currentUserProfile.role === "teacher") {
+
+      el("teacherDashboard")
+        .classList.remove("hidden");
+
+      el("studentDashboard")
+        .classList.add("hidden");
+
+      say(
+        "teacherWelcome",
+        "Welcome, " +
+        (currentUserProfile.name || "Teacher") +
+        "!"
+      );
+
+      loadTeacherQuizzes(user);
+
+      loadTeacherResults();
+
+    } else {
+
+      el("studentDashboard")
+        .classList.remove("hidden");
+
+      el("teacherDashboard")
+        .classList.add("hidden");
+
+      say(
+        "welcomeText",
+        "Welcome, " +
+        (currentUserProfile.name || "student") +
+        "!"
+      );
+
+      loadAvailableQuizzes();
+
+      loadResults(user);
     }
   }
 
-  function addTextItem(parent, title, detail) {
-    const item = document.createElement("div");
-    item.className = "item";
-    const heading = document.createElement("h3");
-    heading.textContent = title || "Untitled";
-    const paragraph = document.createElement("p");
-    paragraph.textContent = detail || "";
-    item.append(heading, paragraph);
-    parent.appendChild(item);
-    return item;
-  }
 
-  function loadLibrary() {
-    onSnapshot(collection(db, "materials"), snapshot => {
-      const list = el("libraryList");
-      list.replaceChildren();
-      if (snapshot.empty) {
-        list.textContent = "No materials have been added yet.";
-        return;
-      }
-      snapshot.forEach(record => {
-        const data = record.data();
-        addTextItem(list, data.title, (data.subject ? data.subject + " — " : "") + (data.content || ""));
-        if (data.url) {
-          const link = document.createElement("a");
-          link.href = data.url;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.textContent = "Open learning material";
-          list.lastChild.appendChild(link);
-        }
-      });
-    }, error => say("libraryList", "Could not load materials: " + error.message));
-  }
+  /* =========================
+     SUBJECTS
+     ========================= */
 
-  function loadClasses() {
-    onSnapshot(collection(db, "classes"), snapshot => {
-      const list = el("classList");
-      list.replaceChildren();
-      if (snapshot.empty) {
-        list.textContent = "No classes have been added yet.";
-        return;
-      }
-      snapshot.forEach(record => {
-        const data = record.data();
-        const item = addTextItem(list, data.title, [data.teacher, data.time].filter(Boolean).join(" — "));
-        if (data.meetUrl) {
-          try {
-            const url = new URL(data.meetUrl);
-            if (url.protocol === "https:" && (url.hostname === "meet.google.com" || url.hostname.endsWith(".meet.google.com"))) {
-              const link = document.createElement("a");
-              link.href = url.href;
-              link.target = "_blank";
-              link.rel = "noopener noreferrer";
-              link.textContent = "Join Google Meet";
-              item.appendChild(link);
-            } else {
-              item.append("Meeting link not available.");
-            }
-          } catch {
-            item.append("Meeting link not available.");
-          }
-        }
-      });
-    }, error => say("classList", "Could not load classes: " + error.message));
-  }
 
-  async function loadResults(user) {
-    const resultsBox = el("myResults");
-    try {
-      const resultsQuery = query(
-        collection(db, "quizResults"),
-        where("userId", "==", user.uid),
-        orderBy("submittedAt", "desc"),
-        limit(5)
+  window.addSubject = async () => {
+
+    const name =
+      el("subjectName").value.trim();
+
+    const topic =
+      el("subjectTopic").value.trim();
+
+
+    if (!name || !topic) {
+
+      say(
+        "subjectMessage",
+        "Enter both the subject and topic."
       );
-      onSnapshot(resultsQuery, snapshot => {
-        resultsBox.replaceChildren();
+
+      return;
+    }
+
+
+    const user = auth.currentUser;
+
+    if (!user) {
+
+      say(
+        "subjectMessage",
+        "Please sign in first."
+      );
+
+      return;
+    }
+
+
+    try {
+
+      await addDoc(
+        collection(db, "subjects"),
+        {
+          name,
+          topic,
+          teacherId: user.uid,
+          teacherName:
+            user.displayName || "",
+          createdAt:
+            serverTimestamp()
+        }
+      );
+
+
+      el("subjectName").value = "";
+
+      el("subjectTopic").value = "";
+
+
+      say(
+        "subjectMessage",
+        "Subject/topic added successfully!"
+      );
+
+    } catch (error) {
+
+      say(
+        "subjectMessage",
+        "Could not add subject: " +
+        error.message
+      );
+    }
+  };
+
+
+  /* =========================
+     QUIZ CREATOR
+     ========================= */
+
+
+  function addQuestionBox() {
+
+    const container =
+      el("questionBuilder");
+
+
+    const number =
+      container.children.length + 1;
+
+
+    const box =
+      document.createElement("div");
+
+    box.className =
+      "question-box";
+
+
+    box.innerHTML = `
+
+      <h4>Question ${number}</h4>
+
+      <label>Question</label>
+
+      <input
+        class="question-text"
+        placeholder="Enter the question"
+      >
+
+      <label>Option A</label>
+
+      <input
+        class="option-a"
+        placeholder="Option A"
+      >
+
+      <label>Option B</label>
+
+      <input
+        class="option-b"
+        placeholder="Option B"
+      >
+
+      <label>Option C</label>
+
+      <input
+        class="option-c"
+        placeholder="Option C"
+      >
+
+      <label>Option D</label>
+
+      <input
+        class="option-d"
+        placeholder="Option D"
+      >
+
+      <label>Correct answer</label>
+
+      <select class="correct-answer">
+
+        <option value="a">Option A</option>
+
+        <option value="b">Option B</option>
+
+        <option value="c">Option C</option>
+
+        <option value="d">Option D</option>
+
+      </select>
+
+      <button
+        type="button"
+        class="danger"
+        onclick="this.parentElement.remove()"
+      >
+        Remove Question
+      </button>
+    `;
+
+
+    container.appendChild(box);
+  }
+
+
+  window.addQuestionBox =
+    addQuestionBox;
+
+
+  /* Add first question automatically */
+
+  addQuestionBox();
+
+
+  window.publishQuiz = async () => {
+
+    const user = auth.currentUser;
+
+    if (!user) {
+
+      say(
+        "quizCreateMessage",
+        "Please sign in first."
+      );
+
+      return;
+    }
+
+
+    const title =
+      el("quizTitle").value.trim();
+
+    const subject =
+      el("quizSubject").value.trim();
+
+    const topic =
+      el("quizTopic").value.trim();
+
+    const className =
+      el("quizClass").value.trim();
+
+
+    if (!title || !subject || !topic) {
+
+      say(
+        "quizCreateMessage",
+        "Enter the quiz title, subject and topic."
+      );
+
+      return;
+    }
+
+
+    const boxes =
+      document.querySelectorAll(
+        ".question-box"
+      );
+
+
+    if (boxes.length === 0) {
+
+      say(
+        "quizCreateMessage",
+        "Add at least one question."
+      );
+
+      return;
+    }
+
+
+    const questions = [];
+
+
+    for (const box of boxes) {
+
+      const question =
+        box.querySelector(".question-text")
+          .value.trim();
+
+      const a =
+        box.querySelector(".option-a")
+          .value.trim();
+
+      const b =
+        box.querySelector(".option-b")
+          .value.trim();
+
+      const c =
+        box.querySelector(".option-c")
+          .value.trim();
+
+      const d =
+        box.querySelector(".option-d")
+          .value.trim();
+
+      const answer =
+        box.querySelector(".correct-answer")
+          .value;
+
+
+      if (!question || !a || !b || !c || !d) {
+
+        say(
+          "quizCreateMessage",
+          "Please complete every question."
+        );
+
+        return;
+      }
+
+
+      questions.push({
+        question,
+        options: {
+          a,
+          b,
+          c,
+          d
+        },
+        answer
+      });
+    }
+
+
+    try {
+
+      say(
+        "quizCreateMessage",
+        "Publishing quiz..."
+      );
+
+
+      await addDoc(
+        collection(db, "quizzes"),
+        {
+          title,
+          subject,
+          topic,
+          className,
+          questions,
+          teacherId: user.uid,
+          teacherName:
+            user.displayName || "",
+          published: true,
+          createdAt:
+            serverTimestamp()
+        }
+      );
+
+
+      el("quizTitle").value = "";
+
+      el("quizSubject").value = "";
+
+      el("quizTopic").value = "";
+
+      el("quizClass").value = "";
+
+      el("questionBuilder")
+        .replaceChildren();
+
+      addQuestionBox();
+
+
+      say(
+        "quizCreateMessage",
+        "🎉 Quiz published successfully!"
+      );
+
+
+      loadTeacherQuizzes(user);
+
+    } catch (error) {
+
+      say(
+        "quizCreateMessage",
+        "Could not publish quiz: " +
+        error.message
+      );
+    }
+  };
+
+
+  /* =========================
+     TEACHER QUIZZES
+     ========================= */
+
+
+  function loadTeacherQuizzes(user) {
+
+    const list =
+      el("teacherQuizList");
+
+
+    const quizQuery =
+      query(
+        collection(db, "quizzes"),
+        where(
+          "teacherId",
+          "==",
+          user.uid
+        )
+      );
+
+
+    onSnapshot(
+      quizQuery,
+      snapshot => {
+
+        list.replaceChildren();
+
+
         if (snapshot.empty) {
-          resultsBox.textContent = "No quiz results saved yet.";
+
+          list.textContent =
+            "You have not created any quizzes yet.";
+
           return;
         }
+
+
         snapshot.forEach(record => {
-          const data = record.data();
-          addTextItem(resultsBox, "Score: " + data.score + " / " + data.total,
-            "Quiz: " + (data.quizName || "HTML Basics"));
+
+          const data =
+            record.data();
+
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "item";
+
+
+          item.innerHTML = `
+            <h3>${escapeHtml(data.title)}</h3>
+
+            <span class="badge">
+              ${escapeHtml(data.subject || "")}
+            </span>
+
+            <span class="badge">
+              ${escapeHtml(data.topic || "")}
+            </span>
+
+            <p>
+              Questions:
+              ${(data.questions || []).length}
+            </p>
+
+            <p class="success">
+              Published
+            </p>
+          `;
+
+
+          list.appendChild(item);
         });
-      }, error => say("myResults", "Could not load results: " + error.message));
-    } catch (error) {
-      say("myResults", error.message);
-    }
+
+      },
+      error => {
+
+        list.textContent =
+          "Could not load quizzes: " +
+          error.message;
+      }
+    );
   }
 
-  el("quizForm").addEventListener("submit", async event => {
-    event.preventDefault();
-    const user = auth.currentUser;
-    if (!user) {
-      say("quizResult", "Please sign in before submitting your quiz.");
-      return;
-    }
-    const answers = new FormData(el("quizForm"));
-    const correct = { q1:"a", q2:"b", q3:"c" };
-    let score = 0;
-    for (const question of Object.keys(correct)) {
-      if (answers.get(question) === correct[question]) score++;
-    }
-    say("quizResult", "You scored " + score + " out of 3.");
-    try {
-      await addDoc(collection(db, "quizResults"), {
-        userId: user.uid,
-        quizName: "HTML Basics",
-        score,
-        total: 3,
-        submittedAt: serverTimestamp()
+
+  /* =========================
+     STUDENT QUIZZES
+     ========================= */
+
+
+  function loadAvailableQuizzes() {
+
+    const list =
+      el("availableQuizzes");
+
+
+    const quizQuery =
+      query(
+        collection(db, "quizzes"),
+        where(
+          "published",
+          "==",
+          true
+        )
+      );
+
+
+    onSnapshot(
+      quizQuery,
+      snapshot => {
+
+        list.replaceChildren();
+
+
+        if (snapshot.empty) {
+
+          list.textContent =
+            "No quizzes are available yet.";
+
+          return;
+        }
+
+
+        snapshot.forEach(record => {
+
+          const data =
+            record.data();
+
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "item";
+
+
+          const title =
+            document.createElement("h3");
+
+          title.textContent =
+            data.title || "Quiz";
+
+
+          const info =
+            document.createElement("p");
+
+          info.textContent =
+            [
+              data.subject,
+              data.topic,
+              data.className
+            ]
+            .filter(Boolean)
+            .join(" • ");
+
+
+          const questions =
+            document.createElement("p");
+
+          questions.className =
+            "muted";
+
+          questions.textContent =
+            (data.questions || []).length +
+            " question(s)";
+
+
+          const button =
+            document.createElement("button");
+
+          button.textContent =
+            "Start Quiz";
+
+
+          button.onclick = () =>
+            startQuiz(
+              record.id,
+              data
+            );
+
+
+          item.append(
+            title,
+            info,
+            questions,
+            button
+          );
+
+
+          list.appendChild(item);
+        });
+
+      },
+      error => {
+
+        list.textContent =
+          "Could not load quizzes: " +
+          error.message;
+      }
+    );
+  }
+
+
+  function startQuiz(id, data) {
+
+    currentQuiz = {
+      id,
+      ...data
+    };
+
+
+    el("quizPlayer")
+      .classList.remove("hidden");
+
+
+    el("playingQuizTitle")
+      .textContent =
+      data.title || "Quiz";
+
+
+    el("playingQuizInfo")
+      .textContent =
+      [
+        data.subject,
+        data.topic,
+        data.className
+      ]
+      .filter(Boolean)
+      .join(" • ");
+
+
+    const form =
+      el("dynamicQuizForm");
+
+
+    form.replaceChildren();
+
+
+    (data.questions || [])
+      .forEach(
+        (question, index) => {
+
+          const box =
+            document.createElement("div");
+
+          box.className =
+            "question-box";
+
+
+          const heading =
+            document.createElement("h3");
+
+          heading.textContent =
+            (index + 1) +
+            ". " +
+            question.question;
+
+
+          box.appendChild(heading);
+
+
+          ["a", "b", "c", "d"]
+            .forEach(letter => {
+
+              const label =
+                document.createElement("label");
+
+              label.className =
+                "option";
+
+
+              const radio =
+                document.createElement("input");
+
+              radio.type =
+                "radio";
+
+              radio.name =
+                "question_" + index;
+
+              radio.value =
+                letter;
+
+              radio.style.width =
+                "auto";
+
+
+              label.append(
+                radio,
+                " " +
+                (question.options?.[letter] || "")
+              );
+
+
+              box.appendChild(label);
+            });
+
+
+          form.appendChild(box);
+        }
+      );
+
+
+    say(
+      "dynamicQuizResult",
+      ""
+    );
+
+
+    el("quizPlayer")
+      .scrollIntoView({
+        behavior: "smooth"
       });
-      say("quizResult", "You scored " + score + " out of 3. Your result has been saved!");
-    } catch (error) {
-      say("quizResult", "Your score is " + score + " out of 3, but it could not be saved: " + error.message);
-    }
-  });
+  }
 
-  onAuthStateChanged(auth, async user => {
-    if (!user) {
-      el("authForms").classList.remove("hidden");
-      el("signedInArea").classList.add("hidden");
-      el("dashboard").classList.add("hidden");
-      say("libraryList", "Sign in to load learning materials.");
-      say("classList", "Sign in to load live classes.");
-      say("myResults", "Sign in to view your saved results.");
-      return;
-    }
 
-    el("authForms").classList.add("hidden");
-    el("signedInArea").classList.remove("hidden");
-    el("dashboard").classList.remove("hidden");
-    say("signedInText", "Signed in as " + (user.displayName || user.email));
-    say("welcomeText", "Welcome, " + (user.displayName || "student") + "!");
-    try {
-      await saveUserProfile(user);
-      loadLibrary();
-      loadClasses();
-      loadResults(user);
-    } catch (error) {
-      say("accountMessage", "Signed in, but database setup needs attention: " + error.message);
+  window.submitDynamicQuiz =
+    async () => {
+
+      const user =
+        auth.currentUser;
+
+
+      if (!user) {
+
+        say(
+          "dynamicQuizResult",
+          "Please sign in first."
+        );
+
+        return;
+      }
+
+
+      if (!currentQuiz) {
+
+        say(
+          "dynamicQuizResult",
+          "Please select a quiz first."
+        );
+
+        return;
+      }
+
+
+      let score = 0;
+
+      const questions =
+        currentQuiz.questions || [];
+
+
+      questions.forEach(
+        (question, index) => {
+
+          const selected =
+            document.querySelector(
+              `input[name="question_${index}"]:checked`
+            );
+
+
+          if (
+            selected &&
+            selected.value ===
+            question.answer
+          ) {
+
+            score++;
+          }
+        }
+      );
+
+
+      const total =
+        questions.length;
+
+
+      try {
+
+        await addDoc(
+          collection(db, "quizResults"),
+          {
+            userId: user.uid,
+
+            studentName:
+              user.displayName ||
+              user.email ||
+              "Student",
+
+            studentEmail:
+              user.email || "",
+
+            quizId:
+              currentQuiz.id,
+
+            quizName:
+              currentQuiz.title || "Quiz",
+
+            teacherId:
+              currentQuiz.teacherId || "",
+
+            teacherName:
+              currentQuiz.teacherName || "",
+
+            subject:
+              currentQuiz.subject || "",
+
+            score,
+
+            total,
+
+            submittedAt:
+              serverTimestamp()
+          }
+        );
+
+
+        say(
+          "dynamicQuizResult",
+          "🎉 You scored " +
+          score +
+          " out of " +
+          total +
+          ". Your result has been saved!"
+        );
+
+
+        loadResults(user);
+
+      } catch (error) {
+
+        say(
+          "dynamicQuizResult",
+          "You scored " +
+          score +
+          " out of " +
+          total +
+          ", but your result could not be saved: " +
+          error.message
+        );
+      }
+    };
+
+
+  /* =========================
+     STUDENT RESULTS
+     ========================= */
+
+
+  function loadResults(user) {
+
+    const resultsBox =
+      el("myResults");
+
+
+    const resultsQuery =
+      query(
+        collection(db, "quizResults"),
+        where(
+          "userId",
+          "==",
+          user.uid
+        )
+      );
+
+
+    onSnapshot(
+      resultsQuery,
+      snapshot => {
+
+        resultsBox.replaceChildren();
+
+
+        if (snapshot.empty) {
+
+          resultsBox.textContent =
+            "No quiz results saved yet.";
+
+          return;
+        }
+
+
+        snapshot.forEach(record => {
+
+          const data =
+            record.data();
+
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "item";
+
+
+          const heading =
+            document.createElement("h3");
+
+          heading.textContent =
+            data.quizName ||
+            "Quiz";
+
+
+          const score =
+            document.createElement("p");
+
+          score.textContent =
+            "Score: " +
+            data.score +
+            " / " +
+            data.total;
+
+
+          const subject =
+            document.createElement("p");
+
+          subject.className =
+            "muted";
+
+          subject.textContent =
+            data.subject || "";
+
+
+          item.append(
+            heading,
+            score,
+            subject
+          );
+
+
+          resultsBox.appendChild(item);
+        });
+
+      },
+      error => {
+
+        resultsBox.textContent =
+          "Could not load results: " +
+          error.message;
+      }
+    );
+  }
+
+
+  /* =========================
+     TEACHER RESULTS
+     ========================= */
+
+
+  function loadTeacherResults() {
+
+    const box =
+      el("teacherResults");
+
+
+    onSnapshot(
+      collection(db, "quizResults"),
+      snapshot => {
+
+        box.replaceChildren();
+
+
+        if (snapshot.empty) {
+
+          box.textContent =
+            "No student results yet.";
+
+          return;
+        }
+
+
+        let count = 0;
+
+
+        snapshot.forEach(record => {
+
+          const data =
+            record.data();
+
+
+          if (
+            currentUserProfile &&
+            data.teacherId !==
+            auth.currentUser?.uid
+          ) {
+
+            return;
+          }
+
+
+          count++;
+
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "item";
+
+
+          const heading =
+            document.createElement("h3");
+
+          heading.textContent =
+            data.studentName ||
+            data.studentEmail ||
+            "Student";
+
+
+          const quiz =
+            document.createElement("p");
+
+          quiz.textContent =
+            "Quiz: " +
+            (data.quizName || "Quiz");
+
+
+          const score =
+            document.createElement("p");
+
+          score.className =
+            "success";
+
+          score.textContent =
+            "Score: " +
+            data.score +
+            " / " +
+            data.total;
+
+
+          const subject =
+            document.createElement("p");
+
+          subject.className =
+            "muted";
+
+          subject.textContent =
+            "Subject: " +
+            (data.subject || "");
+
+
+          item.append(
+            heading,
+            quiz,
+            score,
+            subject
+          );
+
+
+          box.appendChild(item);
+        });
+
+
+        if (count === 0) {
+
+          box.textContent =
+            "No results from your students yet.";
+        }
+
+      },
+      error => {
+
+        box.textContent =
+          "Could not load results: " +
+          error.message;
+      }
+    );
+  }
+
+
+  /* =========================
+     LIBRARY
+     ========================= */
+
+
+  function loadLibrary() {
+
+    onSnapshot(
+      collection(db, "materials"),
+      snapshot => {
+
+        const list =
+          el("libraryList");
+
+
+        list.replaceChildren();
+
+
+        if (snapshot.empty) {
+
+          list.textContent =
+            "No materials have been added yet.";
+
+          return;
+        }
+
+
+        snapshot.forEach(record => {
+
+          const data =
+            record.data();
+
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "item";
+
+
+          const heading =
+            document.createElement("h3");
+
+          heading.textContent =
+            data.title ||
+            "Untitled";
+
+
+          const paragraph =
+            document.createElement("p");
+
+          paragraph.textContent =
+            (
+              data.subject
+              ? data.subject + " — "
+              : ""
+            ) +
+            (
+              data.content || ""
+            );
+
+
+          item.append(
+            heading,
+            paragraph
+          );
+
+
+          if (data.url) {
+
+            const link =
+              document.createElement("a");
+
+            link.href =
+              data.url;
+
+            link.target =
+              "_blank";
+
+            link.rel =
+              "noopener noreferrer";
+
+            link.textContent =
+              "Open learning material";
+
+
+            item.appendChild(link);
+          }
+
+
+          list.appendChild(item);
+        });
+
+      },
+      error =>
+        say(
+          "libraryList",
+          "Could not load materials: " +
+          error.message
+        )
+    );
+  }
+
+
+  /* =========================
+     LIVE CLASSES
+     ========================= */
+
+
+  function loadClasses() {
+
+    onSnapshot(
+      collection(db, "classes"),
+      snapshot => {
+
+        const list =
+          el("classList");
+
+
+        list.replaceChildren();
+
+
+        if (snapshot.empty) {
+
+          list.textContent =
+            "No classes have been added yet.";
+
+          return;
+        }
+
+
+        snapshot.forEach(record => {
+
+          const data =
+            record.data();
+
+
+          const item =
+            document.createElement("div");
+
+          item.className =
+            "item";
+
+
+          const heading =
+            document.createElement("h3");
+
+          heading.textContent =
+            data.title ||
+            "Live Class";
+
+
+          const details =
+            document.createElement("p");
+
+          details.textContent =
+            [
+              data.teacher,
+              data.time
+            ]
+            .filter(Boolean)
+            .join(" — ");
+
+
+          item.append(
+            heading,
+            details
+          );
+
+
+          if (data.meetUrl) {
+
+            const link =
+              document.createElement("a");
+
+            link.href =
+              data.meetUrl;
+
+            link.target =
+              "_blank";
+
+            link.rel =
+              "noopener noreferrer";
+
+            link.textContent =
+              "Join Google Meet";
+
+
+            item.appendChild(link);
+          }
+
+
+          list.appendChild(item);
+        });
+
+      },
+      error =>
+        say(
+          "classList",
+          "Could not load classes: " +
+          error.message
+        )
+    );
+  }
+
+
+  /* =========================
+     SECURITY HELPER
+     ========================= */
+
+
+  function escapeHtml(value) {
+
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+
+  /* =========================
+     AUTH STATE
+     ========================= */
+
+
+  onAuthStateChanged(
+    auth,
+    async user => {
+
+      if (!user) {
+
+        el("authForms")
+          .classList.remove("hidden");
+
+        el("signedInArea")
+          .classList.add("hidden");
+
+        el("studentDashboard")
+          .classList.add("hidden");
+
+        el("teacherDashboard")
+          .classList.add("hidden");
+
+        say(
+          "libraryList",
+          "Sign in to load learning materials."
+        );
+
+        say(
+          "availableQuizzes",
+          "Sign in to view quizzes."
+        );
+
+        say(
+          "myResults",
+          "Sign in to view your saved results."
+        );
+
+        say(
+          "classList",
+          "Sign in to load live classes."
+        );
+
+        return;
+      }
+
+
+      el("authForms")
+        .classList.add("hidden");
+
+      el("signedInArea")
+        .classList.remove("hidden");
+
+
+      say(
+        "signedInText",
+        "Signed in as " +
+        (
+          user.displayName ||
+          user.email
+        )
+      );
+
+
+      try {
+
+        await saveUserProfile(user);
+
+        await loadUserProfile(user);
+
+        loadLibrary();
+
+        loadClasses();
+
+      } catch (error) {
+
+        say(
+          "accountMessage",
+          "Signed in, but database setup needs attention: " +
+          error.message
+        );
+      }
+
     }
-  });
-</script>
-</body>
+  );
+
+</script></body>
 </html>
